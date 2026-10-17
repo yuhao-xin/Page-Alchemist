@@ -135,6 +135,7 @@ Skill 会指导 agent 调用 CLI，而不是临时拼 API 请求。
 | [docs/transform-rules.md](docs/transform-rules.md) | 每条清洗规则 + 前后对比实例 |
 | [docs/faq.md](docs/faq.md) | 常见问题、错误码、版权立场 |
 | [references/cli-reference.md](references/cli-reference.md) | 完整 CLI 参数（由 `--help` 生成） |
+| [docs/github-upload.md](docs/github-upload.md) | 把仓库推到 GitHub 的步骤 |
 
 ## 🐳 Docker
 

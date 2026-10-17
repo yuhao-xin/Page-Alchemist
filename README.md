@@ -146,6 +146,7 @@ The skill instructs the agent to run the CLI, never to improvise API calls.
 | [docs/transform-rules.md](docs/transform-rules.md) | every transform rule with before/after examples |
 | [docs/faq.md](docs/faq.md) | common problems, error codes, copyright stance |
 | [references/cli-reference.md](references/cli-reference.md) | full CLI surface, generated from `--help` |
+| [docs/github-upload.md](docs/github-upload.md) | push this repo to GitHub, step by step |
 
 ## 🐳 Docker
 
