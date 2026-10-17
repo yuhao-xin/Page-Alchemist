@@ -1,0 +1,58 @@
+{
+  "pages_created": 3,
+  "pages_reused": 0,
+  "blocks_appended": 22,
+  "databases_created": 1,
+  "rows_inserted": 2,
+  "skipped": [],
+  "errors": [],
+  "actions": [
+    {
+      "op": "create_page",
+      "title": "Second Brain OS",
+      "parent": "0123456789abcdef0123456789abcdef",
+      "icon": "🗂️",
+      "blocks": 18,
+      "subpages": 1,
+      "database": true
+    },
+    {
+      "op": "append_blocks",
+      "page": "Second Brain OS",
+      "count": 14
+    },
+    {
+      "op": "create_page",
+      "title": "Weekly Review Playbook",
+      "parent": "dry-page-1",
+      "icon": "🌊",
+      "blocks": 5,
+      "subpages": 1,
+      "database": false
+    },
+    {
+      "op": "append_blocks",
+      "page": "Weekly Review Playbook",
+      "count": 5
+    },
+    {
+      "op": "create_page",
+      "title": "Bonus: Advanced Prompts",
+      "parent": "dry-page-2",
+      "icon": "🗃️",
+      "blocks": 3,
+      "subpages": 0,
+      "database": false
+    },
+    {
+      "op": "append_blocks",
+      "page": "Bonus: Advanced Prompts",
+      "count": 3
+    },
+    {
+      "op": "create_database",
+      "title": "Database",
+      "rows": 2
+    }
+  ]
+}

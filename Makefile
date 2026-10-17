@@ -1,4 +1,4 @@
-.PHONY: install install-dev test test-stdlib lint demo doctor clean
+.PHONY: install install-dev test test-stdlib lint preflight demo doctor clean
 
 install:
 	pip install .
@@ -16,6 +16,10 @@ test-stdlib:
 
 lint:
 	ruff check src tests scripts
+
+# SkillHub pre-flight self-check (12 items, exit 0/1/2)
+preflight:
+	python scripts/skillhub_preflight.py
 
 demo:
 	notion-alchemist demo

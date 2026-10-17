@@ -182,3 +182,20 @@ demo 纯标准库。开发期才需要 pytest/ruff。`--help`、`doctor`、`demo
 - **不做 in-place 克隆**（v0.2 roadmap，需 saveTransactions，踩 Notion
   风控的概率高）。
 - **不追新 API 版本**：稳定 > 新特性，除非旧版本被官方下线。
+
+## API 版本迁移策略
+
+`Notion-Version` 钉死 `2022-06-28`。这是主动决策而非疏漏，但需要一条维护规则：
+
+- **为什么钉**：2025-09-03 版本把 `database` 改称 `data source` 并重组了
+  响应字段。本工具的读路径（blocks/children、databases）和写路径
+  （pages.create、children.append、data sources）都已按 `2022-06-28`
+  验证过，测试套件守着。
+- **什么时候该升**：满足任意一条才动——① Notion 官方宣布
+  `2022-06-28` 停止支持（截至目前没有）；② 需要只有新版本才有的特性；
+  ③ 出现无法用我们自身 payload 构造解释的 `validation_error`。
+- **怎么升**：版本号集中在单一位置，改动是机械的——改常量 → 跑测试 →
+  修响应结构变化导致的问题。因为 IR 保留 `raw`，磁盘上的旧归档跨版本
+  依然可读，**不需要**重新提取旧源。
+- **重点盯哪里**：`database` → `data source` 改名是已知破坏性变更，
+  `PageNode.database` 字段与 `parse_export_zip` 的 CSV 路径最可能需要改。

@@ -1,7 +1,13 @@
 # Examples
 
-This directory holds **generated** output and is intentionally not tracked
-in git (see `.gitignore`). Recreate it any time with:
+Two things live here:
+
+- **`sample-output/`** — a *trimmed, committed* copy of a real `na demo` run,
+  so you can judge the output without installing anything. Start at
+  [`sample-output/README.md`](sample-output/README.md) or the
+  [before/after walkthrough](sample-output/before-after.md).
+- **`demo_output/`** — *generated* output, intentionally not tracked in git
+  (see `.gitignore`). Recreate it any time with:
 
 ```bash
 na demo                       # installed: writes examples/demo_output/

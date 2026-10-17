@@ -4,7 +4,7 @@
 
 # Notion Alchemist · 概念炼金术士
 
-**提取 · 清洗 ·  reclaim** —— 把任何你有权访问的 Notion 页面，变成**你自己的**知识库。
+**提取 · 清洗 · 重建** —— 把任何你有权访问的 Notion 页面，变成**你自己的**知识库。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-5B5BD6.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%2B-14B8A6.svg)](https://www.python.org/downloads/)
@@ -30,9 +30,12 @@
 ## 🧭 为什么做
 
 Notion 沉淀了大量有价值的知识，但它们常常锁在别人的私有工作区、付费模板库，
-或一个你无法重组的结构里。Notion Alchemist 的初衷是**让知识回归本人**：
-*私有 → 你的，付费 → 免费*。它是一个个人知识重组工具——你带来访问权，它还你一个
-干净、可再分发的归档。
+或一个你无法重组的结构里。Notion Alchemist 的初衷是**让内容可移植、可归你重组**：
+它读取一棵你已经有权访问的页面树，清洗成规范归档，再重建——重建到你自己的工作区，
+或导出一份可直接导入的 Markdown 包。
+
+它是一个个人知识重组工具——**你带来访问权，它还你一个干净、可再分发的归档。**
+它把「你本来可以一块一块手动做」的事自动化。
 
 > **负责任使用。** 仅提取你有权访问的内容，并遵守源材料的许可与条款。
 > 本工具不突破权限，只是把「手动能做」的事自动化。
@@ -103,7 +106,7 @@ notion-alchemist demo        # 输出到 examples/demo_output/
 | 变量 | 必填 | 含义 |
 |---|---|---|
 | `NOTION_TOKEN` | `api` 引擎 | 内部集成令牌 |
-| `NOTION_TOKEN_V2` | `unofficial` 引擎 | `token_v2` Cookie（**实验性**） |
+| `NOTION_TOKEN_V2` | `unofficial` 引擎 | `token_v2` Cookie（**实验性**，等同登录密码，务必当密码保管） |
 | `NA_PARENT_PAGE` | `publish` | 目标父页面 ID 或链接 |
 | `NA_ICON_MODE` | 否 | `keep` \| `retune`（默认） \| `none` |
 | `NA_MAX_RPS` | 否 | 写入限速，默认 `2.5` |
@@ -128,14 +131,19 @@ Skill 会指导 agent 调用 CLI，而不是临时拼 API 请求。
 
 ## 📚 文档
 
-| 文档 | 内容 |
-|---|---|
-| [docs/notion-token-setup.md](docs/notion-token-setup.md) | **先看这个** —— 凭证申请教程，一步步约 5 分钟 |
-| [docs/architecture.md](docs/architecture.md) | IR 结构、双引擎、写回策略及理由 |
-| [docs/transform-rules.md](docs/transform-rules.md) | 每条清洗规则 + 前后对比实例 |
-| [docs/faq.md](docs/faq.md) | 常见问题、错误码、版权立场 |
-| [references/cli-reference.md](references/cli-reference.md) | 完整 CLI 参数（由 `--help` 生成） |
-| [docs/github-upload.md](docs/github-upload.md) | 把仓库推到 GitHub 的步骤 |
+语言：**en** = English，**zh** = 中文。带标注的完整索引见 [docs/index.md](docs/index.md)。
+
+| 文档 | 语言 | 内容 |
+|---|---|---|
+| [docs/notion-token-setup.md](docs/notion-token-setup.md) | zh | **先看这个** —— 凭证申请教程，一步步约 5 分钟 |
+| [docs/notion-token-setup.en.md](docs/notion-token-setup.en.md) | en | 同一篇教程的英文版 |
+| [docs/architecture.md](docs/architecture.md) | zh | IR 结构、双引擎、写回策略及理由 |
+| [docs/architecture.en.md](docs/architecture.en.md) | en | 同上，英文版 |
+| [docs/transform-rules.md](docs/transform-rules.md) | zh | 每条清洗规则 + 前后对比实例 |
+| [docs/faq.md](docs/faq.md) | zh | 常见问题、错误码、版权立场 |
+| [docs/pm-review.md](docs/pm-review.md) | zh | 产品评审 + SkillHub 评分规则对照 |
+| [references/cli-reference.md](references/cli-reference.md) | en | 完整 CLI 参数（由 `--help` 生成） |
+| [docs/github-upload.md](docs/github-upload.md) | zh | 把仓库推到 GitHub 的步骤 |
 
 ## 🐳 Docker
 

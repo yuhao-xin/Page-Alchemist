@@ -40,4 +40,8 @@ Accent ordering: indigo → violet → teal; amber reserved for emphasis.
 ## Voice
 
 Confident, precise, a little mischievous — an alchemist, not a corporate
-drone. Prefer verbs: *Extract. Cleanse. Reclaim.*
+drone. Prefer verbs: *Extract. Cleanse. Rebuild.*
+
+Never frame the product as unlocking someone else's paywall. The honest
+framing — and the one that survives a security review — is: **the user already
+has the access rights; the tool automates the reorganisation.**

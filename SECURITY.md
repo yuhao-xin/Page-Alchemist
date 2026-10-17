@@ -31,8 +31,9 @@ acknowledge within 72 hours.
 
 ## Handling of unofficial engine
 
-The unofficial engine (`--backend unofficial`) relies on Notion's internal
-export endpoint using a `token_v2` cookie. Treat that cookie as a **password**:
+The unofficial export fallback engine (`na extract <url> --engine export`)
+relies on Notion's internal export endpoint using a `token_v2` cookie. Treat
+that cookie as a **password**:
 
 - it grants full access to your Notion account,
 - rotate it (log out / clear cookies) if you suspect exposure,

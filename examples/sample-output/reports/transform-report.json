@@ -1,0 +1,17 @@
+{
+  "blocks_in": 23,
+  "blocks_out": 22,
+  "dropped": {
+    "table_of_contents": 1,
+    "breadcrumb": 1,
+    "synced_block": 1,
+    "ai_block": 1
+  },
+  "colors_stripped": 2,
+  "icons_retuned": 3,
+  "titles_normalized": 2,
+  "h1_demoted": 2,
+  "duplicates_removed": 1,
+  "cards_added": 3,
+  "notes": []
+}

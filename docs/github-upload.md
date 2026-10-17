@@ -45,7 +45,7 @@ Get-ChildItem -Recurse -Include *.md,*.toml | Where-Object {
 
 ```bash
 gh repo create notion-alchemist --public \
-  --description "Extract, cleanse, restructure and re-publish Notion content into your own knowledge base — private -> yours, paid -> free."
+  --description "Extract, cleanse, restructure and re-publish Notion pages you are authorised to access, into your own workspace or an import-ready Markdown bundle."
 ```
 
 ## 第 3 步：推送

@@ -4,7 +4,7 @@
 
 # Notion Alchemist
 
-**Extract · Cleanse · Reclaim** — turn any Notion page you can access into *your own* knowledge base.
+**Extract · Cleanse · Rebuild** — turn any Notion page you can access into *your own* knowledge base.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-5B5BD6.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/python-3.9%2B-14B8A6.svg)](https://www.python.org/downloads/)
@@ -33,9 +33,14 @@ Notion holds a lot of valuable knowledge — but much of it is locked inside
 someone else's private workspace, a paid template library, or a structure you
 cannot reorganise.
 
-Notion Alchemist exists to **reclaim knowledge**: *private → yours, paid → free*.
-It is a personal knowledge-reorganisation tool: you bring access rights, it
-hands you a clean, re-publishable archive.
+Notion Alchemist exists to make your Notion content **portable and yours to
+restructure**: it reads a page tree you already have access to, cleanses it
+into a canonical archive, and rebuilds it — as fresh pages in your own
+workspace, or as an import-ready Markdown bundle.
+
+It is a personal knowledge-reorganisation tool: **you bring the access rights,
+it hands you a clean, re-publishable archive.** It automates work you could
+otherwise do by hand, block by block.
 
 > **Responsible use.** Extract only content you are authorised to access, and
 > respect the licences and terms of the source material. This tool does not
@@ -88,6 +93,18 @@ stages, producing a transformed archive, a publish plan and a Markdown bundle
 under `examples/demo_output/`. Ideal for evaluating the transform rules and
 the output shape before touching a real workspace.
 
+A trimmed sample of that output is committed at
+[`examples/sample-output/`](examples/sample-output/) — you can judge the
+result without installing anything.
+
+## 📸 Sample output
+
+| Before (source) | After (transform) |
+|---|---|
+| `Second Brain OS` · emoji-laden title, coloured callouts, a template block and a TOC marker | `Second Brain OS` · plain title, default colours, template/TOC stripped, provenance callout appended |
+
+Full before/after: [`examples/sample-output/before-after.md`](examples/sample-output/before-after.md)
+
 ## 📖 CLI reference
 
 | Command | Description |
@@ -111,7 +128,7 @@ Configuration comes from environment variables or a `.env` file:
 | Variable | Required | Meaning |
 |---|---|---|
 | `NOTION_TOKEN` | for `api` engine | Internal integration token |
-| `NOTION_TOKEN_V2` | for `unofficial` engine | `token_v2` cookie (**experimental**) |
+| `NOTION_TOKEN_V2` | for `unofficial` engine | `token_v2` cookie (**experimental** — treat as your password) |
 | `NA_PARENT_PAGE` | for `publish` | Target parent page ID or URL |
 | `NA_ICON_MODE` | no | `keep` \| `retune` (default) \| `none` |
 | `NA_MAX_RPS` | no | Write rate limit, default `2.5` |
@@ -139,14 +156,20 @@ The skill instructs the agent to run the CLI, never to improvise API calls.
 
 ## 📚 Documentation
 
-| Doc | Contents |
-|---|---|
-| [docs/notion-token-setup.md](docs/notion-token-setup.md) | **Start here** — credential tutorial, step by step, ~5 min |
-| [docs/architecture.md](docs/architecture.md) | IR shape, both engines, the write-back strategy and why |
-| [docs/transform-rules.md](docs/transform-rules.md) | every transform rule with before/after examples |
-| [docs/faq.md](docs/faq.md) | common problems, error codes, copyright stance |
-| [references/cli-reference.md](references/cli-reference.md) | full CLI surface, generated from `--help` |
-| [docs/github-upload.md](docs/github-upload.md) | push this repo to GitHub, step by step |
+Language: **en** = English, **zh** = 中文. See [docs/index.md](docs/index.md) for the
+annotated index.
+
+| Doc | Lang | Contents |
+|---|---|---|
+| [docs/notion-token-setup.md](docs/notion-token-setup.md) | zh | **Start here** — credential tutorial, step by step, ~5 min |
+| [docs/notion-token-setup.en.md](docs/notion-token-setup.en.md) | en | Same tutorial in English |
+| [docs/architecture.md](docs/architecture.md) | zh | IR shape, both engines, the write-back strategy and why |
+| [docs/architecture.en.md](docs/architecture.en.md) | en | Same, in English |
+| [docs/transform-rules.md](docs/transform-rules.md) | zh | every transform rule with before/after examples |
+| [docs/faq.md](docs/faq.md) | zh | common problems, error codes, copyright stance |
+| [docs/pm-review.md](docs/pm-review.md) | zh | product review + SkillHub rubric cross-check |
+| [references/cli-reference.md](references/cli-reference.md) | en | full CLI surface, generated from `--help` |
+| [docs/github-upload.md](docs/github-upload.md) | zh | push this repo to GitHub, step by step |
 
 ## 🐳 Docker
 

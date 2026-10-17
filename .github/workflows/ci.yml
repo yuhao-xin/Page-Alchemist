@@ -39,3 +39,28 @@ jobs:
           notion-alchemist --help
           notion-alchemist doctor || true
           notion-alchemist demo -o /tmp/ci-demo
+
+  skillhub-preflight:
+    name: SkillHub pre-flight self-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # exit 2 = would be rejected; exit 1 = risks worth reviewing.
+      # `run` uses `bash -e`, so capture the code before the step can abort.
+      - name: Run the 12-item pre-flight checker
+        shell: bash
+        run: |
+          set +e
+          python scripts/skillhub_preflight.py
+          code=$?
+          set -e
+          if [ "$code" -ge 2 ]; then
+            echo "::error::SkillHub pre-flight would reject this package"
+            exit 1
+          fi
+          if [ "$code" -eq 1 ]; then
+            echo "::warning::SkillHub pre-flight reports risks (see log above)"
+          fi

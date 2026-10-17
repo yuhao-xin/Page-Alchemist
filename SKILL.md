@@ -1,14 +1,16 @@
 ---
 name: notion-alchemist
 description: >-
-  Extract, cleanse, restructure and re-publish Notion content into the user's
-  own workspace. Use when the user wants to copy/clone/archive a Notion page
-  they have access to, convert a private or paid Notion library into their own
-  public free knowledge base, strip synced-block/template markers and retune
-  icons, or export Notion content as import-ready Markdown. Triggers:
-  "extract this Notion page", "clone this Notion template", "copy Notion to my
-  workspace", "Notion 提取", "Notion 克隆", "把 Notion 页面搬到我的空间",
-  "Notion 导出 Markdown".
+  Extract, cleanse, restructure and re-publish Notion content the user is
+  authorised to access, into the user's own workspace. Use when the user wants
+  to copy or clone a Notion page into their own space, convert a Notion page
+  tree into an import-ready Markdown knowledge base, strip template credits /
+  synced-block markers / watermark-ish text, normalise icons and heading
+  hierarchy across many pages, or archive and re-layout a Notion library.
+  Triggers: "extract this Notion page", "clone this Notion template into my
+  workspace", "turn this Notion library into Markdown", "remove template
+  watermarks", "reorganise my Notion pages", "Notion 提取", "Notion 克隆",
+  "把 Notion 页面搬到我的空间", "Notion 导出 Markdown", "批量整理 Notion 页面".
 license: MIT
 compatibility: Requires Python >= 3.9 and the `requests` package for network
   stages (extract/publish). The demo, transform and export-md stages run with
@@ -17,8 +19,9 @@ compatibility: Requires Python >= 3.9 and the `requests` package for network
 
 # Notion Alchemist
 
-Turn any Notion page you can access into *your own* knowledge base:
-**Extract → Transform → Publish**, as a local-first CLI.
+Turn any Notion page **you are authorised to access** into a clean,
+re-publishable archive under your own structure: **Extract → Transform →
+Publish**, as a local-first CLI.
 
 ## Golden rules
 
@@ -32,8 +35,14 @@ Turn any Notion page you can access into *your own* knowledge base:
    `.env` themselves. Never echo, log or commit token values.
 4. **Only extract content the user is authorised to access**, and respect the
    source's licence and Notion's Terms of Use. This tool automates manual
-   work; it does not bypass permissions.
-5. **Respect the two-project boundary.** Feishu/Lark extraction is a separate
+   work; it does not bypass permissions. Do not use it to redistribute
+   paywalled or licensed material.
+5. **Treat `NOTION_TOKEN_V2` as a password.** It is a logged-in session
+   cookie, not an API key: whoever holds it is logged in as the user. Never
+   echo it, never write it into a file other than the user's own `.env`, and
+   prefer the official-API engine whenever the page can be shared with an
+   integration.
+6. **Respect the two-project boundary.** Feishu/Lark extraction is a separate
    project — do not extend this tool for it.
 
 ## Environment check (run first)
@@ -45,6 +54,12 @@ python -m notion_alchemist.cli doctor        # or: na doctor
 Exit `0` = ready. Exit `2` = fixable config problem (token/paths) — read the
 printed hints, they name the exact fix. `requests` missing is fine for
 demo/transform/export-md, but required for extract/publish.
+
+Before publishing this skill anywhere, also run the packaging self-check:
+
+```bash
+python scripts/skillhub_preflight.py         # 12-item check, exit 0/1/2
+```
 
 ## Intent → command map
 
@@ -99,8 +114,12 @@ Every default has an escape hatch: `--keep-noise`, `--keep-colors`,
 
 ## References
 
-- `docs/notion-token-setup.md` — credential setup, step by step
-- `docs/architecture.md` — IR shape, engines, write-back strategy
-- `docs/transform-rules.md` — every transform rule with before/after examples
-- `docs/faq.md` — common problems
+- [docs/index.md](docs/index.md) — annotated index of all docs, with language tags
+- `docs/notion-token-setup.md` — credential setup, step by step (zh)
+- `docs/notion-token-setup.en.md` — same, in English
+- `docs/architecture.md` — IR shape, engines, write-back strategy (zh)
+- `docs/architecture.en.md` — same, in English
+- `docs/transform-rules.md` — every transform rule with before/after examples (zh)
+- `docs/faq.md` — common problems (zh)
+- `examples/sample-output/` — committed before/after sample, no install needed
 - `references/cli-reference.md` — full CLI surface
