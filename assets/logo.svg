@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Notion Alchemist">
+  <defs>
+    <linearGradient id="na-liquid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5B5BD6"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+    <linearGradient id="na-glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8B5CF6" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#14B8A6" stop-opacity="0"/>
+    </linearGradient>
+    <clipPath id="na-flask">
+      <path d="M236 82 L236 196 C236 196 176 290 176 344 A80 80 0 0 0 336 344 C336 290 276 196 276 196 L276 82 Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- ambient glow -->
+  <circle cx="256" cy="330" r="196" fill="url(#na-glow)"/>
+
+  <!-- sparks -->
+  <circle cx="146" cy="176" r="9" fill="#F59E0B"/>
+  <circle cx="372" cy="222" r="6" fill="#14B8A6"/>
+  <circle cx="398" cy="146" r="4" fill="#8B5CF6"/>
+  <circle cx="120" cy="268" r="4" fill="#5B5BD6"/>
+
+  <!-- flask glass -->
+  <path d="M236 82 L236 196 C236 196 176 290 176 344 A80 80 0 0 0 336 344 C336 290 276 196 276 196 L276 82"
+        fill="none" stroke="#101223" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="212" y="62" width="88" height="20" rx="10" fill="#101223"/>
+
+  <!-- liquid -->
+  <g clip-path="url(#na-flask)">
+    <path d="M170 312 C200 298 222 324 252 312 C282 300 306 326 342 312 L342 430 L170 430 Z" fill="url(#na-liquid)"/>
+    <circle cx="212" cy="366" r="5" fill="#FFFFFF" opacity="0.45"/>
+    <circle cx="302" cy="334" r="3.5" fill="#FFFFFF" opacity="0.4"/>
+  </g>
+
+  <!-- page inside the liquid -->
+  <rect x="226" y="340" width="60" height="66" rx="6" fill="#FFFFFF" opacity="0.96"/>
+  <path d="M272 340 L286 354 L272 354 Z" fill="#D8DBEE"/>
+  <rect x="236" y="364" width="40" height="6" rx="3" fill="#5B5BD6" opacity="0.75"/>
+  <rect x="236" y="378" width="40" height="6" rx="3" fill="#5B5BD6" opacity="0.5"/>
+  <rect x="236" y="392" width="26" height="6" rx="3" fill="#14B8A6" opacity="0.75"/>
+</svg>

@@ -1,0 +1,17 @@
+# Local / automated deployment for Notion Alchemist.
+#
+#   docker compose run --rm alchemist run "<notion-url>" --parent "$NA_PARENT_PAGE"
+#
+# For scheduled runs, wrap the command in cron (host) or a GitHub Actions
+# workflow — see .github/workflows/ and docs/architecture.md.
+#
+# State: with no NA_STATE_DIR set, the resumable .na_state.json lives inside
+# --output (default: /app/output), which is the only mount below — so an
+# interrupted run resumes from the same volume.
+
+services:
+  alchemist:
+    build: .
+    env_file: .env
+    volumes:
+      - ./output:/app/output

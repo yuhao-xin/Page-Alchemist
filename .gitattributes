@@ -1,0 +1,12 @@
+# Normalise line endings: LF in the repo, native checkout on Windows.
+* text=auto eol=lf
+
+# Windows-only scripts keep CRLF
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary assets — never touch
+*.png binary
+*.svg binary
+*.ico binary

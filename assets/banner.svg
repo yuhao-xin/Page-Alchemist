@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Notion Alchemist — Extract, cleanse, reclaim">
+  <defs>
+    <linearGradient id="bn-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101223"/>
+      <stop offset="0.55" stop-color="#1B1E3D"/>
+      <stop offset="1" stop-color="#0E3B3A"/>
+    </linearGradient>
+    <radialGradient id="bn-glow" cx="0.16" cy="0.5" r="0.55">
+      <stop offset="0" stop-color="#5B5BD6" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#5B5BD6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="bn-liquid" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bn-bg)"/>
+  <rect width="1200" height="630" fill="url(#bn-glow)"/>
+
+  <!-- subtle grid -->
+  <g stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="1">
+    <path d="M0 90 H1200 M0 180 H1200 M0 270 H1200 M0 360 H1200 M0 450 H1200 M0 540 H1200"/>
+    <path d="M150 0 V630 M300 0 V630 M450 0 V630 M600 0 V630 M750 0 V630 M900 0 V630 M1050 0 V630"/>
+  </g>
+
+  <!-- sparks -->
+  <circle cx="330" cy="120" r="7" fill="#F59E0B" opacity="0.9"/>
+  <circle cx="1120" cy="150" r="5" fill="#14B8A6" opacity="0.9"/>
+  <circle cx="1080" cy="500" r="4" fill="#8B5CF6" opacity="0.9"/>
+
+  <!-- logo mark -->
+  <g transform="translate(96,150) scale(0.66)">
+    <circle cx="256" cy="330" r="196" fill="#8B5CF6" opacity="0.12"/>
+    <path d="M236 82 L236 196 C236 196 176 290 176 344 A80 80 0 0 0 336 344 C336 290 276 196 276 196 L276 82"
+          fill="none" stroke="#FFFFFF" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="212" y="62" width="88" height="20" rx="10" fill="#FFFFFF"/>
+    <path d="M170 312 C200 298 222 324 252 312 C282 300 306 326 342 312 L342 430 L170 430 Z" fill="url(#bn-liquid)"/>
+    <rect x="226" y="340" width="60" height="66" rx="6" fill="#FFFFFF" opacity="0.96"/>
+    <path d="M272 340 L286 354 L272 354 Z" fill="#D8DBEE"/>
+    <rect x="236" y="364" width="40" height="6" rx="3" fill="#5B5BD6" opacity="0.75"/>
+    <rect x="236" y="378" width="40" height="6" rx="3" fill="#5B5BD6" opacity="0.5"/>
+    <rect x="236" y="392" width="26" height="6" rx="3" fill="#14B8A6" opacity="0.75"/>
+  </g>
+
+  <!-- wordmark -->
+  <text x="420" y="292" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif"
+        font-size="78" font-weight="700" fill="#FFFFFF">Notion <tspan fill="#14B8A6">Alchemist</tspan></text>
+  <text x="422" y="352" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif"
+        font-size="29" fill="#A9ADC8">Extract · Cleanse · Reclaim — your Notion, your rules.</text>
+
+  <!-- pipeline chips -->
+  <g font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif" font-size="24">
+    <rect x="422" y="410" width="216" height="60" rx="30" fill="#FFFFFF" fill-opacity="0.08" stroke="#5B5BD6" stroke-opacity="0.6"/>
+    <text x="452" y="449" fill="#C9CDF0">① Extract</text>
+    <rect x="656" y="410" width="252" height="60" rx="30" fill="#FFFFFF" fill-opacity="0.08" stroke="#8B5CF6" stroke-opacity="0.6"/>
+    <text x="686" y="449" fill="#C9CDF0">② Transform</text>
+    <rect x="926" y="410" width="236" height="60" rx="30" fill="#FFFFFF" fill-opacity="0.08" stroke="#14B8A6" stroke-opacity="0.6"/>
+    <text x="956" y="449" fill="#C9CDF0">③ Publish</text>
+  </g>
+</svg>

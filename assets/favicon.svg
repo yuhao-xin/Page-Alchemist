@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Notion Alchemist favicon">
+  <defs>
+    <linearGradient id="f-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5B5BD6"/>
+      <stop offset="1" stop-color="#14B8A6"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="url(#f-bg)"/>
+  <path d="M26 14 L26 30 C26 30 20 38 20 43 A12 12 0 0 0 44 43 C44 38 38 30 38 30 L38 14"
+        fill="none" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="24" y="10" width="16" height="5" rx="2.5" fill="#FFFFFF"/>
+  <path d="M20 44 C24 42 27 45 32 44 C37 43 40 46 44 44 L44 52 L20 52 Z" fill="#FFFFFF" opacity="0.35"/>
+  <circle cx="47" cy="17" r="2.6" fill="#F59E0B"/>
+</svg>

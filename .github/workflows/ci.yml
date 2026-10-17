@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test-stdlib:
+    # proves the suite runs with zero dependencies (fresh clone, no pip)
+    name: tests (stdlib runner, no deps)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run test suite without installing anything
+        run: python scripts/run_tests.py
+
+  test-pytest:
+    name: tests (pytest) + lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install package + dev extras
+        run: pip install -e ".[dev]"
+      - name: pytest
+        run: pytest
+      - name: ruff
+        run: ruff check src tests scripts
+      - name: CLI smoke (help/doctor/demo need no credentials)
+        run: |
+          notion-alchemist --version
+          notion-alchemist --help
+          notion-alchemist doctor || true
+          notion-alchemist demo -o /tmp/ci-demo
