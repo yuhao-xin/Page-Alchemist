@@ -6,7 +6,7 @@ how to set up a development environment and the conventions we follow.
 ## Development setup
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/notion-alchemist.git
+git clone https://github.com/yuhao-xin/notion-alchemist.git
 cd notion-alchemist
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -e ".[dev]"

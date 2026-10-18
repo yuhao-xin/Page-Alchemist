@@ -6,34 +6,14 @@
 > ⚠️ 推送前先确认：仓库里没有 `.env`、`output/`、`examples/demo_output/`
 > （都已在 `.gitignore`）。当前提交只含源码、测试、文档与品牌资产。
 
-## 第 1 步：替换占位符 `YOUR_GITHUB_USERNAME`
+## 第 1 步：替换占位符 `YOUR_GITHUB_USERNAME` —— ✅ 已完成
 
-出现在 4 个文件：`pyproject.toml`、`README.md`、`README.zh-CN.md`、
-`CONTRIBUTING.md`。把下面命令中的 `你的GitHub用户名` 换成实际用户名：
+占位符已全部替换为实际用户名 `yuhao-xin`，涉及 5 个文件：`pyproject.toml`、
+`README.md`、`README.zh-CN.md`、`CONTRIBUTING.md`、`docs/github-upload.md`（本文件）。
+校验方式（应无输出）：
 
 ```bash
-# bash / Git Bash
-USER="你的GitHub用户名"
-grep -rl "YOUR_GITHUB_USERNAME" . --include="*.md" --include="*.toml" \
-  | grep -v "./.git/" \
-  | xargs sed -i "s/YOUR_GITHUB_USERNAME/$USER/g"
-
-# 验证：应该没有任何输出
 grep -rn "YOUR_GITHUB_USERNAME" . --include="*.md" --include="*.toml" | grep -v "./.git/"
-
-git add -A
-git commit -m "Set repository owner to $USER"
-```
-
-PowerShell 等价写法：
-
-```powershell
-$User = "你的GitHub用户名"
-Get-ChildItem -Recurse -Include *.md,*.toml | Where-Object {
-    $_.FullName -notmatch '\\\.git\\' } | ForEach-Object {
-  (Get-Content $_.FullName -Raw) -replace 'YOUR_GITHUB_USERNAME', $User |
-    Set-Content $_.FullName -NoNewline
-}
 ```
 
 ## 第 2 步：在 GitHub 建仓库
@@ -51,7 +31,7 @@ gh repo create notion-alchemist --public \
 ## 第 3 步：推送
 
 ```bash
-git remote add origin https://github.com/你的GitHub用户名/notion-alchemist.git
+git remote add origin https://github.com/yuhao-xin/notion-alchemist.git
 git branch -M main
 git push -u origin main
 ```

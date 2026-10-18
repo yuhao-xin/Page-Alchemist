@@ -148,7 +148,7 @@ The repository root **is** an Agent Skill (`SKILL.md`, plus `scripts/`,
 
 ```bash
 # Claude Code / WorkBuddy style
-git clone https://github.com/YOUR_GITHUB_USERNAME/notion-alchemist.git ~/.claude/skills/notion-alchemist
+git clone https://github.com/yuhao-xin/notion-alchemist.git ~/.claude/skills/notion-alchemist
 # then simply ask: "extract this Notion page into my workspace: <url>"
 ```
 
@@ -191,7 +191,7 @@ Scheduled (re-)publication can be driven by host cron or GitHub Actions.
 ## 🤝 Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Bug reports and feature requests via
-[issues](https://github.com/YOUR_GITHUB_USERNAME/notion-alchemist/issues).
+[issues](https://github.com/yuhao-xin/notion-alchemist/issues).
 
 ## 📄 License
 

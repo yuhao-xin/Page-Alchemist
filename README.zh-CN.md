@@ -123,7 +123,7 @@ notion-alchemist demo        # 输出到 examples/demo_output/
 + `assets/`），可被任何兼容 skills 的 agent 使用：
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/notion-alchemist.git ~/.claude/skills/notion-alchemist
+git clone https://github.com/yuhao-xin/notion-alchemist.git ~/.claude/skills/notion-alchemist
 # 然后直接说：「把这个 Notion 页面提取到我的工作区：<url>」
 ```
 
@@ -165,7 +165,7 @@ GitHub Actions 驱动。
 ## 🤝 贡献
 
 见 [CONTRIBUTING.md](CONTRIBUTING.md)。问题与需求请提
-[issue](https://github.com/YOUR_GITHUB_USERNAME/notion-alchemist/issues)。
+[issue](https://github.com/yuhao-xin/notion-alchemist/issues)。
 
 ## 📄 许可
 
