@@ -70,9 +70,10 @@ python scripts/skillhub_preflight.py         # 12-item check, exit 0/1/2
 | Only reachable via view-only/guest access | `na extract <url> --engine export` (experimental; needs `NOTION_TOKEN_V2`) |
 | Cleanse / retune icons / relayout an existing IR | `na transform output/structure.json -o output` |
 | Rebuild in the user's own Notion | `na publish output/transformed.json --parent <id-or-url>` — **always `--dry-run` first** |
+| Copy into Feishu/Lark Docs instead | `na publish-feishu output/transformed.json` — **always `--dry-run` first**; needs `NA_FEISHU_APP_ID` + `NA_FEISHU_APP_SECRET` |
 | Everything in one shot | `na run <url> --parent <id-or-url>` |
 | Markdown bundle instead of Notion pages | `na run <url> --md-only` or `na export-md output/transformed.json` |
-| Resume an interrupted publish | just re-run the same `publish` command — `.na_state.json` makes it idempotent |
+| Resume an interrupted publish | just re-run the same `publish` / `publish-feishu` command — the state file makes it idempotent |
 | Parse an already-downloaded export ZIP | `na extract <url> --engine export --zip path/to.zip` |
 
 ## Stage outputs (all plain JSON — inspectable, scriptable, versionable)
@@ -84,7 +85,10 @@ output/
 ├── transformed.json        # IR after Transform (the publish input)
 ├── transform-report.json   # what was dropped / stripped / retuned
 ├── publish-report.json     # pages created, blocks appended, errors
+├── publish-feishu-report.json  # documents created/reused, blocks, errors
 ├── markdown-report.json    # bundle stats (export-md)
+├── .na_state.json          # Notion publish resume state
+├── .na_feishu_state.json   # Feishu publish resume state
 ├── assets/                 # images & files pulled at extract time
 └── bundle/                 # import-ready Markdown (export-md)
 ```

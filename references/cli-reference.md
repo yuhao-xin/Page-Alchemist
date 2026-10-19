@@ -4,16 +4,17 @@
 
 ```text
 usage: notion-alchemist [-h] [--version] [-v]
-                        {extract,transform,publish,export-md,run,demo,doctor} ...
+                        {extract,transform,publish,publish-feishu,export-md,run,demo,doctor} ...
 
 Extract, cleanse, restructure and re-publish Notion content into your own
 knowledge base.
 
 positional arguments:
-  {extract,transform,publish,export-md,run,demo,doctor}
+  {extract,transform,publish,publish-feishu,export-md,run,demo,doctor}
     extract             pull a Notion page tree into IR
     transform           cleanse and restyle the IR
     publish             write the IR into your Notion
+    publish-feishu      write the IR into Feishu/Lark Docs
     export-md           render the IR as an import-ready Markdown bundle
     run                 full pipeline: extract -> transform -> publish
     demo                offline demo — no token, no network
@@ -98,6 +99,27 @@ options:
                        NA_PARENT_PAGE)
   --dry-run            plan everything, make no API calls
   --no-upload          do not upload local assets to Notion
+  --output, -o OUTPUT  working directory for IR + reports (default: output)
+  --env-file ENV_FILE  dotenv file to load (default: .env)
+```
+
+## `publish-feishu`
+
+```text
+usage: notion-alchemist publish-feishu [-h] [--folder FOLDER] [--dry-run]
+                                       [--no-upload] [--output OUTPUT]
+                                       [--env-file ENV_FILE]
+                                       input
+
+positional arguments:
+  input                path to structure.json or transformed.json
+
+options:
+  -h, --help           show this help message and exit
+  --folder FOLDER      Feishu folder token to create documents in (or
+                       NA_FEISHU_FOLDER; omit for the app's root)
+  --dry-run            plan everything, make no API calls
+  --no-upload          do not upload local images to Feishu
   --output, -o OUTPUT  working directory for IR + reports (default: output)
   --env-file ENV_FILE  dotenv file to load (default: .env)
 ```

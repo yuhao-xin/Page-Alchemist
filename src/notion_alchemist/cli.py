@@ -5,6 +5,7 @@ Subcommands
 ``extract``     pull a Notion page tree into the canonical IR (``structure.json``)
 ``transform``   cleanse / restyle / re-layout the IR (``transformed.json``)
 ``publish``     write the IR back into your own Notion workspace
+``publish-feishu``  write the IR into Feishu/Lark Docs as docx documents
 ``export-md``   render the IR as an import-ready Markdown bundle
 ``run``         the full pipeline: extract -> transform -> publish (or --md-only)
 ``demo``        offline demo: no token, no network, full artifact set
@@ -219,6 +220,46 @@ def cmd_publish(args: argparse.Namespace, settings: Settings) -> int:
 
 
 # --------------------------------------------------------------------------- #
+# publish-feishu
+# --------------------------------------------------------------------------- #
+def cmd_publish_feishu(args: argparse.Namespace, settings: Settings) -> int:
+    from .feishu import publish_to_feishu
+
+    src = Path(args.input)
+    doc = _load_document(src)
+    out = Path(args.output)
+    out.mkdir(parents=True, exist_ok=True)
+
+    folder = (args.folder or settings.feishu_folder or "").strip()
+    try:
+        report = publish_to_feishu(
+            doc, settings, folder_token=folder,
+            dry_run=args.dry_run, upload_files=not args.no_upload)
+    except ValueError as exc:  # configuration problems surface here
+        print(f"error: {exc}", file=sys.stderr)
+        return EXIT_CONFIG
+    except KeyboardInterrupt:
+        print("\ninterrupted — created documents are recorded in "
+              ".na_feishu_state.json, re-run to resume", file=sys.stderr)
+        return EXIT_ERROR
+
+    _write_json(out / "publish-feishu-report.json", report.to_dict())
+    _banner("publish-feishu done (dry-run)" if args.dry_run
+            else "publish-feishu done")
+    print(report.summary())
+    for d in report.documents:
+        print(f"  {(d['title'] or '')[:50]:<52} {d['url']}")
+    for note in report.skipped:
+        print(f"  note  {note}")
+    for err in report.errors:
+        print(f"  ERROR {err}", file=sys.stderr)
+    if args.dry_run:
+        print("\nthis was a dry run — no API calls were made. "
+              "Drop --dry-run to publish for real.")
+    return EXIT_ERROR if report.errors else EXIT_OK
+
+
+# --------------------------------------------------------------------------- #
 # export-md
 # --------------------------------------------------------------------------- #
 def cmd_export_md(args: argparse.Namespace, settings: Settings) -> int:
@@ -315,6 +356,10 @@ def cmd_doctor(args: argparse.Namespace, settings: Settings) -> int:
     print(f"TOKEN_V2     : {'set' if settings.notion_token_v2 else '(not set)'}")
     print(f"FILE_TOKEN   : {'set' if settings.file_token else '(not set)'}")
     print(f"parent page  : {settings.parent_page or '(not set)'}")
+    print(f"FEISHU_APP   : {settings.feishu_app_id or '(not set)'}"
+          f"{'' if settings.feishu_app_id else ' — needed by publish-feishu'}")
+    print(f"feishu folder: {settings.feishu_folder or '(not set)'}")
+    print(f"feishu base  : {settings.feishu_base}")
     print(f"icon mode    : {settings.icon_mode}")
     print(f"max rps      : {settings.max_rps}")
     print(f"state dir    : {settings.state_dir}")
@@ -432,6 +477,20 @@ def build_parser() -> argparse.ArgumentParser:
     add_publish_args(sp)
     add_common(sp)
     sp.set_defaults(func=cmd_publish)
+
+    # publish-feishu
+    sp = sub.add_parser("publish-feishu",
+                        help="write the IR into Feishu/Lark Docs")
+    sp.add_argument("input", help=f"path to {STRUCTURE} or {TRANSFORMED}")
+    sp.add_argument("--folder", default=None,
+                    help="Feishu folder token to create documents in "
+                         "(or NA_FEISHU_FOLDER; omit for the app's root)")
+    sp.add_argument("--dry-run", action="store_true",
+                    help="plan everything, make no API calls")
+    sp.add_argument("--no-upload", action="store_true",
+                    help="do not upload local images to Feishu")
+    add_common(sp)
+    sp.set_defaults(func=cmd_publish_feishu)
 
     # export-md
     sp = sub.add_parser("export-md",

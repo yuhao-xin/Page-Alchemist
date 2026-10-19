@@ -26,6 +26,8 @@ Both READMEs link here; every doc below is also reachable from
 |---|---|---|
 | [../references/cli-reference.md](../references/cli-reference.md) | en | Full CLI surface, generated from `--help` |
 | [../SKILL.md](../SKILL.md) | en | Agent-Skill instructions, golden rules, intent→command map |
+| [feishu-publish.en.md](feishu-publish.en.md) | en | Copy the IR into Feishu/Lark Docs — app setup, scopes, behaviour notes |
+| [feishu-publish.md](feishu-publish.md) | zh | 同上，中文版（发布到飞书云文档） |
 | [faq.md](faq.md) | zh | Common problems, error codes, copyright stance |
 
 ## Tooling
@@ -52,7 +54,7 @@ Both READMEs link here; every doc below is also reachable from
 
 ---
 
-*Translation status: the two highest-friction docs (credentials and
-architecture) are bilingual. `transform-rules.md`, `faq.md` and
+*Translation status: the highest-friction docs (credentials, architecture,
+Feishu publish) are bilingual. `transform-rules.md`, `faq.md` and
 `github-upload.md` are Chinese-only for now; the primary audience for those is
 Chinese-speaking users. Contributions of English versions are welcome.*

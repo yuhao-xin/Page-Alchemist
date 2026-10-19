@@ -90,6 +90,7 @@ notion-alchemist demo        # 输出到 examples/demo_output/
 | `na extract <url>` | 抓取页面树 → `output/structure.json`（IR JSON + `output/assets/`） |
 | `na transform <structure.json>` | 清洗 / 图标重组 / 重排 → `transformed.json` + `transform-report.json` |
 | `na publish <transformed.json> --parent <id\|url>` | 在你的 Notion 重建页面（分块、可续跑、幂等） |
+| `na publish-feishu <transformed.json> [--folder <token>]` | 拷贝到飞书/Lark 云文档（docx），断点续跑不重复 |
 | `na run <url> --parent <id\|url>` | 提取 → 清洗 → 发布 一条龙 |
 | `na export-md <transformed.json>` | 生成可直接导入的 Markdown 包 |
 | `na demo` | mock 数据全流程，无需凭证 |
@@ -108,6 +109,10 @@ notion-alchemist demo        # 输出到 examples/demo_output/
 | `NOTION_TOKEN` | `api` 引擎 | 内部集成令牌 |
 | `NOTION_TOKEN_V2` | `unofficial` 引擎 | `token_v2` Cookie（**实验性**，等同登录密码，务必当密码保管） |
 | `NA_PARENT_PAGE` | `publish` | 目标父页面 ID 或链接 |
+| `NA_FEISHU_APP_ID` | `publish-feishu` | 飞书自建应用 App ID（`cli_…`） |
+| `NA_FEISHU_APP_SECRET` | `publish-feishu` | 飞书自建应用 App Secret |
+| `NA_FEISHU_FOLDER` | 否 | 文档创建到哪个云空间文件夹（token） |
+| `NA_FEISHU_BASE` | 否 | `https://open.feishu.cn`（飞书）或 `https://open.larksuite.com`（Lark） |
 | `NA_ICON_MODE` | 否 | `keep` \| `retune`（默认） \| `none` |
 | `NA_MAX_RPS` | 否 | 写入限速，默认 `2.5` |
 | `NA_HTTP_TIMEOUT` | 否 | 单请求超时，默认 `30` |
@@ -137,6 +142,8 @@ Skill 会指导 agent 调用 CLI，而不是临时拼 API 请求。
 |---|---|---|
 | [docs/notion-token-setup.md](docs/notion-token-setup.md) | zh | **先看这个** —— 凭证申请教程，一步步约 5 分钟 |
 | [docs/notion-token-setup.en.md](docs/notion-token-setup.en.md) | en | 同一篇教程的英文版 |
+| [docs/feishu-publish.md](docs/feishu-publish.md) | zh | 发布到飞书/Lark 云文档 —— 应用创建、权限、行为说明 |
+| [docs/feishu-publish.en.md](docs/feishu-publish.en.md) | en | 同一篇教程的英文版 |
 | [docs/architecture.md](docs/architecture.md) | zh | IR 结构、双引擎、写回策略及理由 |
 | [docs/architecture.en.md](docs/architecture.en.md) | en | 同上，英文版 |
 | [docs/transform-rules.md](docs/transform-rules.md) | zh | 每条清洗规则 + 前后对比实例 |
@@ -160,7 +167,6 @@ GitHub Actions 驱动。
 - **v0.2** —— 非官方 *duplicate* 引擎（saveTransactions 原地克隆）
 - **v0.3** —— 增量同步与 diff（源 ↔ 已发布副本）
 - **v0.4** —— 可选的本地 Web 预览界面（发布前预览清洗效果）
-- **后续** —— 飞书/Lark 提取为**独立项目**
 
 ## 🤝 贡献
 

@@ -112,6 +112,7 @@ Full before/after: [`examples/sample-output/before-after.md`](examples/sample-ou
 | `na extract <url>` | Fetch a page tree → `output/structure.json` (+ `output/assets/`) |
 | `na transform <structure.json>` | Cleanse / retune icons / relayout → `transformed.json` + `transform-report.json` |
 | `na publish <transformed.json> --parent <id\|url>` | Rebuild pages in your Notion (chunked, resumable, idempotent) |
+| `na publish-feishu <transformed.json> [--folder <token>]` | Copy the IR into Feishu/Lark Docs as docx documents |
 | `na run <url> --parent <id\|url>` | extract → transform → publish in one shot |
 | `na export-md <transformed.json>` | Produce an import-ready Markdown bundle |
 | `na demo` | Full pipeline on mock data, no credentials |
@@ -130,6 +131,10 @@ Configuration comes from environment variables or a `.env` file:
 | `NOTION_TOKEN` | for `api` engine | Internal integration token |
 | `NOTION_TOKEN_V2` | for `unofficial` engine | `token_v2` cookie (**experimental** — treat as your password) |
 | `NA_PARENT_PAGE` | for `publish` | Target parent page ID or URL |
+| `NA_FEISHU_APP_ID` | for `publish-feishu` | Feishu custom app id (`cli_…`) |
+| `NA_FEISHU_APP_SECRET` | for `publish-feishu` | Feishu custom app secret |
+| `NA_FEISHU_FOLDER` | no | Folder token to create documents in |
+| `NA_FEISHU_BASE` | no | `https://open.feishu.cn` (Feishu) or `https://open.larksuite.com` (Lark) |
 | `NA_ICON_MODE` | no | `keep` \| `retune` (default) \| `none` |
 | `NA_MAX_RPS` | no | Write rate limit, default `2.5` |
 | `NA_HTTP_TIMEOUT` | no | Per-request timeout, default `30` |
@@ -163,6 +168,8 @@ annotated index.
 |---|---|---|
 | [docs/notion-token-setup.md](docs/notion-token-setup.md) | zh | **Start here** — credential tutorial, step by step, ~5 min |
 | [docs/notion-token-setup.en.md](docs/notion-token-setup.en.md) | en | Same tutorial in English |
+| [docs/feishu-publish.md](docs/feishu-publish.md) | zh | Publish to Feishu/Lark Docs — app setup, scopes, behaviour |
+| [docs/feishu-publish.en.md](docs/feishu-publish.en.md) | en | Same tutorial in English |
 | [docs/architecture.md](docs/architecture.md) | zh | IR shape, both engines, the write-back strategy and why |
 | [docs/architecture.en.md](docs/architecture.en.md) | en | Same, in English |
 | [docs/transform-rules.md](docs/transform-rules.md) | zh | every transform rule with before/after examples |
@@ -186,7 +193,6 @@ Scheduled (re-)publication can be driven by host cron or GitHub Actions.
 - **v0.2** — unofficial *duplicate* engine (in-place clone via saveTransactions)
 - **v0.3** — incremental sync & diff between source and published copy
 - **v0.4** — optional local web UI for previewing the transform before publish
-- **later** — a sibling project for Feishu/Lark extraction (deliberately separate)
 
 ## 🤝 Contributing
 
