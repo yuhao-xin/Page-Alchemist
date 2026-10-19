@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import pytest
 
-from notion_alchemist.transform import (RETUNE_EMOJI, TransformOptions,
+from page_alchemist.transform import (RETUNE_EMOJI, TransformOptions,
                                         pick_emoji, transform_document)
 
 
@@ -111,7 +111,7 @@ class TestRelayout:
         assert report.duplicates_removed == 1
 
     def test_non_adjacent_duplicates_kept(self, transform_doc):
-        from notion_alchemist.models import Block, RichText
+        from page_alchemist.models import Block, RichText
         page = transform_doc.pages[0]
         page.blocks = [
             Block(type="paragraph", text=[RichText(text="dup")]),
@@ -129,7 +129,7 @@ class TestRelayout:
 
 class TestTableRowsSurvive:
     def test_table_row_not_dropped_as_empty(self, transform_doc):
-        from notion_alchemist.models import Block, RichText
+        from page_alchemist.models import Block, RichText
         page = transform_doc.pages[0]
         page.blocks = [Block(type="table",
                              raw={"table": {"table_width": 2}},

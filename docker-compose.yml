@@ -1,4 +1,4 @@
-# Local / automated deployment for Notion Alchemist.
+# Local / automated deployment for Page Alchemist.
 #
 #   docker compose run --rm alchemist run "<notion-url>" --parent "$NA_PARENT_PAGE"
 #

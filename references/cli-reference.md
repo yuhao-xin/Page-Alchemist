@@ -1,9 +1,9 @@
 # CLI 参考（CLI Reference）
 
-> 本文档由 `python -m notion_alchemist.cli <cmd> --help` 实际输出生成，与实现严格一致。
+> 本文档由 `python -m page_alchemist.cli <cmd> --help` 实际输出生成，与实现严格一致。
 
 ```text
-usage: notion-alchemist [-h] [--version] [-v]
+usage: page-alchemist [-h] [--version] [-v]
                         {extract,transform,publish,publish-feishu,export-md,run,demo,doctor} ...
 
 Extract, cleanse, restructure and re-publish Notion content into your own
@@ -31,7 +31,7 @@ see docs/ for the token tutorial and architecture notes
 ## `extract`
 
 ```text
-usage: notion-alchemist extract [-h] [--engine {api,export,auto}]
+usage: page-alchemist extract [-h] [--engine {api,export,auto}]
                                 [--no-assets] [--shallow] [--zip ZIP]
                                 [--output OUTPUT] [--env-file ENV_FILE]
                                 url
@@ -57,7 +57,7 @@ options:
 ## `transform`
 
 ```text
-usage: notion-alchemist transform [-h] [--keep-noise] [--keep-colors]
+usage: page-alchemist transform [-h] [--keep-noise] [--keep-colors]
                                   [--icon-mode {keep,retune,none}]
                                   [--keep-titles] [--keep-h1]
                                   [--keep-duplicates] [--no-archive-card]
@@ -85,7 +85,7 @@ options:
 ## `publish`
 
 ```text
-usage: notion-alchemist publish [-h] [--parent PARENT] [--dry-run]
+usage: page-alchemist publish [-h] [--parent PARENT] [--dry-run]
                                 [--no-upload] [--output OUTPUT]
                                 [--env-file ENV_FILE]
                                 input
@@ -106,7 +106,7 @@ options:
 ## `publish-feishu`
 
 ```text
-usage: notion-alchemist publish-feishu [-h] [--folder FOLDER] [--dry-run]
+usage: page-alchemist publish-feishu [-h] [--folder FOLDER] [--dry-run]
                                        [--no-upload] [--output OUTPUT]
                                        [--env-file ENV_FILE]
                                        input
@@ -127,7 +127,7 @@ options:
 ## `export-md`
 
 ```text
-usage: notion-alchemist export-md [-h] [--no-assets] [--output OUTPUT]
+usage: page-alchemist export-md [-h] [--no-assets] [--output OUTPUT]
                                   [--env-file ENV_FILE]
                                   input
 
@@ -144,7 +144,7 @@ options:
 ## `run`
 
 ```text
-usage: notion-alchemist run [-h] [--engine {api,export,auto}] [--no-assets]
+usage: page-alchemist run [-h] [--engine {api,export,auto}] [--no-assets]
                             [--shallow] [--zip ZIP] [--keep-noise]
                             [--keep-colors] [--icon-mode {keep,retune,none}]
                             [--keep-titles] [--keep-h1] [--keep-duplicates]
@@ -190,7 +190,7 @@ options:
 ## `demo`
 
 ```text
-usage: notion-alchemist demo [-h] [--output OUTPUT] [--env-file ENV_FILE]
+usage: page-alchemist demo [-h] [--output OUTPUT] [--env-file ENV_FILE]
 
 options:
   -h, --help           show this help message and exit
@@ -201,7 +201,7 @@ options:
 ## `doctor`
 
 ```text
-usage: notion-alchemist doctor [-h] [--env-file ENV_FILE]
+usage: page-alchemist doctor [-h] [--env-file ENV_FILE]
 
 options:
   -h, --help           show this help message and exit

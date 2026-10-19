@@ -1,4 +1,4 @@
-# 产品经理评审报告 · Notion Alchemist v0.1.0
+# 产品经理评审报告 · Page Alchemist v0.1.0
 
 > 视角：假设我是第一次看到这个仓库的评审者 / SkillHub 评委 / 潜在用户。
 > 结论先行：**产品定位和工程完成度都在水位之上，但有两处 P0 问题会直接
@@ -24,7 +24,7 @@
 
 README 的 `🧭 Why` 写着：
 
-> Notion Alchemist exists to **reclaim knowledge**: *private → yours, paid → free*.
+> Page Alchemist exists to **reclaim knowledge**: *private → yours, paid → free*.
 
 SKILL.md 的 description 写着：
 
@@ -98,7 +98,7 @@ SkillHub 的「实用性」「输出质量」两维直接吃这个亏；对普�
 
 ## 3. 差异化：它到底和什么不一样
 
-| 对比对象 | 对方能给 | 对方不能给 | Notion Alchemist 的独特位 |
+| 对比对象 | 对方能给 | 对方不能给 | Page Alchemist 的独特位 |
 |---|---|---|---|
 | Notion 官方 Export | 一个 zip | 不重组、不写回、不带进度 | **读 → 洗 → 写回闭环** |
 | Notion 官方 Duplicate | 同账号内复制页面 | 不能跨账号 / 跨工作区 | 跨空间重建 + 断点续传 |
@@ -158,7 +158,7 @@ SkillHub 的「实用性」「输出质量」两维直接吃这个亏；对普�
 |---|---|---|---|
 | 1 | 目录结构（SKILL.md 在包根） | ✅ | 仓库根即有 |
 | 2 | 必备字段（frontmatter 顶层 6 字段） | ✅ | name/description/license/compatibility + 正文 |
-| 3 | 标识一致（name == 目录名） | ✅ | `notion-alchemist` |
+| 3 | 标识一致（name == 目录名） | ✅ | `page-alchemist` |
 | 4 | slug 撞车（不含通用词） | ✅ | 非通用词 |
 | 5 | 敏感残留（绝对路径 / 硬编码凭据 / 手机号） | ✅ | `.env.example` 全空值；无绝对路径 |
 | 6 | 编码安全（zip 内中文文件名 UTF-8 标记） | ✅ | 本仓库无中文文件名；上传 zip 时由 `scripts/skillhub_preflight.py` 提示 |

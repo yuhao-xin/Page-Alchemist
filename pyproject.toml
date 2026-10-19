@@ -3,13 +3,13 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "notion-alchemist"
+name = "page-alchemist"
 version = "0.1.0"
-description = "Extract, cleanse, restructure and re-publish Notion pages you are authorised to access, into your own workspace or an import-ready Markdown bundle."
+description = "Extract, cleanse, restructure and re-publish Notion pages you are authorised to access, into your own workspace (Notion or Feishu/Lark) or an import-ready Markdown bundle."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "Notion Alchemist Contributors" }]
+authors = [{ name = "Page Alchemist Contributors" }]
 keywords = [
     "notion",
     "notion-api",
@@ -39,14 +39,14 @@ dependencies = ["requests>=2.31"]
 dev = ["pytest>=7.4", "ruff>=0.6"]
 
 [project.scripts]
-notion-alchemist = "notion_alchemist.cli:main"
-na = "notion_alchemist.cli:main"
+page-alchemist = "page_alchemist.cli:main"
+na = "page_alchemist.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/yuhao-xin/notion-alchemist"
-Repository = "https://github.com/yuhao-xin/notion-alchemist"
-Issues = "https://github.com/yuhao-xin/notion-alchemist/issues"
-Documentation = "https://github.com/yuhao-xin/notion-alchemist#readme"
+Homepage = "https://github.com/yuhao-xin/page-alchemist"
+Repository = "https://github.com/yuhao-xin/page-alchemist"
+Issues = "https://github.com/yuhao-xin/page-alchemist/issues"
+Documentation = "https://github.com/yuhao-xin/page-alchemist#readme"
 
 [tool.setuptools.packages.find]
 where = ["src"]

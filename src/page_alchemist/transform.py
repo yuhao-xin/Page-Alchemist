@@ -169,7 +169,7 @@ def _archive_card(doc: Document, node: PageNode) -> Block:
                if b.type.startswith("heading") and b.plain_text().strip()]
     if outline:
         lines.append("章节：" + " / ".join(outline[:8]))
-    lines.append(f"本页由 notion-alchemist 归档整理（源 {len(node.blocks)} 个内容块）")
+    lines.append(f"本页由 page-alchemist 归档整理（源 {len(node.blocks)} 个内容块）")
     return Block(type="callout", text=[RichText(text="\n".join(lines))],
                  raw={"_archive_card": True})
 

@@ -5,24 +5,24 @@ import json
 
 import pytest
 
-from notion_alchemist import publish as P
-from notion_alchemist.config import Settings
-from notion_alchemist.models import Document
-from notion_alchemist.publish import (NotionPublisher, StateStore,
+from page_alchemist import publish as P
+from page_alchemist.config import Settings
+from page_alchemist.models import Document
+from page_alchemist.publish import (NotionPublisher, StateStore,
                                       rich_text_payload)
-from notion_alchemist.transform import (TransformOptions,
+from page_alchemist.transform import (TransformOptions,
                                         transform_document)
 
 
 class TestRichTextPayload:
     def test_long_run_split(self):
-        from notion_alchemist.models import RichText
+        from page_alchemist.models import RichText
         runs = rich_text_payload([RichText(text="x" * 5000)])
         assert len(runs) > 1
         assert all(len(r["text"]["content"]) <= P.RICH_TEXT_LIMIT for r in runs)
 
     def test_annotations_emitted_only_when_set(self):
-        from notion_alchemist.models import RichText
+        from page_alchemist.models import RichText
         plain = rich_text_payload([RichText(text="a")])
         assert "annotations" not in plain[0]          # no noise when unset
         bold = rich_text_payload([RichText(text="a", bold=True)])
@@ -31,7 +31,7 @@ class TestRichTextPayload:
         assert combo[0]["annotations"] == {"bold": True, "code": True}
 
     def test_link_wrapped(self):
-        from notion_alchemist.models import RichText
+        from page_alchemist.models import RichText
         out = rich_text_payload([RichText(text="t", link="https://x")])
         assert out[0]["text"]["link"] == {"url": "https://x"}
 
@@ -101,7 +101,7 @@ class TestDryRunPublish:
         assert report2.pages_reused == 2
 
     def test_icon_policy_applies_node_icon_only(self, publish_doc, settings):
-        from notion_alchemist.transform import RETUNE_EMOJI
+        from page_alchemist.transform import RETUNE_EMOJI
         transform_document(publish_doc, TransformOptions(icon_mode="retune"))
         pub = NotionPublisher(settings, dry_run=True)
         root = publish_doc.pages[0]
@@ -129,7 +129,7 @@ class TestStateStore:
 
 class TestPublishEntry:
     def test_config_problems_raise(self, publish_doc, settings):
-        from notion_alchemist.publish import publish_document
+        from page_alchemist.publish import publish_document
         # parent given but no token -> the token problem must surface
         # (mirrors the CLI feeding --parent back into settings)
         settings.notion_token = ""
@@ -139,14 +139,14 @@ class TestPublishEntry:
                              parent_page_id="0123456789abcdef0123456789abcdef")
 
     def test_missing_parent_raises(self, publish_doc, settings):
-        from notion_alchemist.publish import publish_document
+        from page_alchemist.publish import publish_document
         settings.notion_token = "secret-token-abc"
         with pytest.raises(ValueError, match="NA_PARENT_PAGE"):
             publish_document(publish_doc, settings,
                              parent_page_id="")
 
     def test_dry_run_does_not_need_token(self, publish_doc):
-        from notion_alchemist.publish import publish_document
+        from page_alchemist.publish import publish_document
         settings = Settings(parent_page="0123456789abcdef0123456789abcdef",
                             state_dir=".")
         report = publish_document(publish_doc, settings, dry_run=True)

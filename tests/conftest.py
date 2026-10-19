@@ -53,7 +53,7 @@ _install_requests_stub()
 
 import pytest  # noqa: E402
 
-from notion_alchemist.models import Block, Document, PageNode, RichText  # noqa: E402
+from page_alchemist.models import Block, Document, PageNode, RichText  # noqa: E402
 
 
 # --------------------------------------------------------------------------- #
@@ -165,6 +165,6 @@ def publish_doc() -> Document:
 
 @pytest.fixture()
 def settings(tmp_path):
-    from notion_alchemist.config import Settings
+    from page_alchemist.config import Settings
     return Settings(notion_token="secret-token-abc", parent_page="",
                     icon_mode="retune", state_dir=str(tmp_path / "state"))

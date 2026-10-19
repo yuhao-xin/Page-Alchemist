@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
-LOGGER_NAME = "notion-alchemist"
+LOGGER_NAME = "page-alchemist"
 
 _HEX32 = re.compile(r"[0-9a-f]{32}", re.I)
 _UUID_RE = re.compile(

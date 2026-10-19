@@ -22,10 +22,10 @@ preflight:
 	python scripts/skillhub_preflight.py
 
 demo:
-	notion-alchemist demo
+	page-alchemist demo
 
 doctor:
-	notion-alchemist doctor
+	page-alchemist doctor
 
 clean:
 	rm -rf build dist *.egg-info .pytest_cache .ruff_cache output examples/demo_output _smoke_state

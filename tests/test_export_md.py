@@ -3,9 +3,9 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from notion_alchemist.export_md import (export_markdown, render_page_md,
+from page_alchemist.export_md import (export_markdown, render_page_md,
                                         render_rich_text)
-from notion_alchemist.models import Block, Document, PageNode, RichText
+from page_alchemist.models import Block, Document, PageNode, RichText
 
 
 def _page() -> PageNode:

@@ -33,7 +33,7 @@ Both must be shared with the integration.
    open <https://www.notion.so/my-integrations>
 2. Click **+ New integration**
 3. Fill in:
-   - **Name** — something recognisable, e.g. `Notion Alchemist` (this name
+   - **Name** — something recognisable, e.g. `Page Alchemist` (this name
      shows up in the page's *Connections* list)
    - **Associated workspace** — pick the target workspace (an integration is
      bound to one workspace; a different workspace needs a new integration)
@@ -204,7 +204,7 @@ NOTION_TOKEN=ntn_xxx NA_PARENT_PAGE=https://... \
 add `NOTION_TOKEN` and `NA_PARENT_PAGE`, then reference them in a workflow:
 
 ```yaml
-- run: notion-alchemist run "$SOURCE_URL" --parent "$NA_PARENT_PAGE"
+- run: page-alchemist run "$SOURCE_URL" --parent "$NA_PARENT_PAGE"
   env:
     NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
     NA_PARENT_PAGE: ${{ secrets.NA_PARENT_PAGE }}
@@ -227,5 +227,5 @@ add `NOTION_TOKEN` and `NA_PARENT_PAGE`, then reference them in a workflow:
 ---
 
 *The authoritative definition of every credential field lives in
-[`../src/notion_alchemist/config.py`](../src/notion_alchemist/config.py).
+[`../src/page_alchemist/config.py`](../src/page_alchemist/config.py).
 When in doubt, run `na doctor` first.*

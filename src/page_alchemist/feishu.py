@@ -520,7 +520,7 @@ def breadcrumb_block(page: PageNode, source_url: str,
                      bid: str = "breadcrumb") -> Dict[str, Any]:
     """Provenance callout prepended to every copied document."""
     path = " / ".join(page.path or [page.title])
-    content = (f"Copied by notion-alchemist\n"
+    content = (f"Copied by page-alchemist\n"
                f"Source: {source_url or '(unknown)'}\n"
                f"Path: {path}\n"
                f"Sub-pages are separate documents in the same folder.")

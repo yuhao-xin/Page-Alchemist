@@ -1,13 +1,13 @@
-# Contributing to Notion Alchemist
+# Contributing to Page Alchemist
 
-Thanks for your interest in improving Notion Alchemist! This document describes
+Thanks for your interest in improving Page Alchemist! This document describes
 how to set up a development environment and the conventions we follow.
 
 ## Development setup
 
 ```bash
-git clone https://github.com/yuhao-xin/notion-alchemist.git
-cd notion-alchemist
+git clone https://github.com/yuhao-xin/page-alchemist.git
+cd page-alchemist
 python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install -e ".[dev]"
 ```
@@ -19,7 +19,7 @@ pip install -e ".[dev]"
 | `make test` / `pytest` | Run the test suite (no network required) |
 | `make lint` / `ruff check src tests` | Lint |
 | `make demo` | Run the full pipeline on built-in mock data |
-| `notion-alchemist doctor` | Validate your local configuration |
+| `page-alchemist doctor` | Validate your local configuration |
 
 ## Conventions
 

@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from notion_alchemist.util import (RateLimiter, backoff_delay,
+from page_alchemist.util import (RateLimiter, backoff_delay,
                                    extract_notion_id, format_uuid,
                                    load_dotenv, safe_filename, sha1_bytes,
                                    sha1_file, slugify)

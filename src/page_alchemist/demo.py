@@ -6,7 +6,7 @@ titles, colours, table-of-contents, breadcrumbs, synced blocks, duplicate
 blocks, body H1s), then run Extract(IR) -> Transform -> Publish(--dry-run)
 -> Markdown export and write everything into ``examples/demo_output/``.
 
-This is what ``notion-alchemist demo`` executes, and what the docs point at
+This is what ``page-alchemist demo`` executes, and what the docs point at
 when they say "try it before you configure anything".
 """
 from __future__ import annotations

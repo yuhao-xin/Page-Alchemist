@@ -7,8 +7,8 @@ from pathlib import Path
 
 import pytest
 
-from notion_alchemist import cli
-from notion_alchemist.config import Settings
+from page_alchemist import cli
+from page_alchemist.config import Settings
 
 
 def run_cli(argv):
@@ -38,7 +38,7 @@ class TestDoctor:
         code = run_cli(["doctor"])
         out = capsys.readouterr().out
         assert code in (0, 2)
-        assert "notion-alchemist doctor" in out
+        assert "page-alchemist doctor" in out
         assert "python" in out
 
 

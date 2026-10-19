@@ -1,5 +1,5 @@
 ---
-name: notion-alchemist
+name: page-alchemist
 description: >-
   Extract, cleanse, restructure and re-publish Notion content the user is
   authorised to access, into the user's own workspace. Use when the user wants
@@ -17,7 +17,7 @@ compatibility: Requires Python >= 3.9 and the `requests` package for network
   the standard library alone.
 ---
 
-# Notion Alchemist
+# Page Alchemist
 
 Turn any Notion page **you are authorised to access** into a clean,
 re-publishable archive under your own structure: **Extract → Transform →
@@ -48,7 +48,7 @@ Publish**, as a local-first CLI.
 ## Environment check (run first)
 
 ```bash
-python -m notion_alchemist.cli doctor        # or: na doctor
+python -m page_alchemist.cli doctor        # or: na doctor
 ```
 
 Exit `0` = ready. Exit `2` = fixable config problem (token/paths) — read the

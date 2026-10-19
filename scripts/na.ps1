@@ -1,4 +1,4 @@
-# notion-alchemist wrapper (Windows) — run the CLI straight from a git
+# page-alchemist wrapper (Windows) — run the CLI straight from a git
 # checkout, no installation required.
 #
 # Usage (PowerShell):
@@ -7,7 +7,7 @@
 #
 # If your python is not on PATH (e.g. a venv or the WorkBuddy managed
 # interpreter), point at it explicitly first:
-#   $env:NOTION_ALCHEMIST_PYTHON = "C:\path\to\python.exe"
+#   $env:PAGE_ALCHEMIST_PYTHON = "C:\path\to\python.exe"
 #   .\scripts\na.ps1 demo
 param([Parameter(ValueFromRemainingArguments = $true)][string[]]$Args)
 
@@ -23,9 +23,9 @@ function Test-PythonWorks([string]$Candidate) {
   }
 }
 
-$Py = $env:NOTION_ALCHEMIST_PYTHON
+$Py = $env:PAGE_ALCHEMIST_PYTHON
 if ($Py -and -not (Test-PythonWorks $Py)) {
-  Write-Error "NOTION_ALCHEMIST_PYTHON='$Py' does not run. Fix the path."
+  Write-Error "PAGE_ALCHEMIST_PYTHON='$Py' does not run. Fix the path."
   exit 1
 }
 if (-not $Py) {
@@ -39,10 +39,10 @@ if (-not $Py) {
   }
 }
 if (-not $Py) {
-  Write-Error "no working python found on PATH. Set `$env:NOTION_ALCHEMIST_PYTHON to a real interpreter."
+  Write-Error "no working python found on PATH. Set `$env:PAGE_ALCHEMIST_PYTHON to a real interpreter."
   exit 1
 }
 
 $env:PYTHONPATH = "$Here\src" + $(if ($env:PYTHONPATH) { ";$env:PYTHONPATH" } else { "" })
-& $Py -m notion_alchemist.cli @Args
+& $Py -m page_alchemist.cli @Args
 exit $LASTEXITCODE

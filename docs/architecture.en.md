@@ -2,7 +2,7 @@
 
 ## In one sentence
 
-**Notion Alchemist = a three-stage pipeline over a canonical intermediate
+**Page Alchemist = a three-stage pipeline over a canonical intermediate
 representation (IR) that lives on disk.** Extract → Transform → Publish, with
 stages passing only two plain-JSON files: `structure.json` and
 `transformed.json`.
@@ -35,7 +35,7 @@ stages passing only two plain-JSON files: `structure.json` and
 
 ## IR (Intermediate Representation)
 
-Defined in `src/notion_alchemist/models.py` — four dataclasses:
+Defined in `src/page_alchemist/models.py` — four dataclasses:
 
 | Type | Key fields | Notes |
 |---|---|---|
@@ -181,7 +181,7 @@ every stage and **needs no token at all**.
 ## Module map
 
 ```
-src/notion_alchemist/
+src/page_alchemist/
 ├── cli.py               # seven subcommands: extract/transform/publish/
 │                        #   export-md/run/demo/doctor
 ├── config.py            # Settings: env/.env → validated by problems()
@@ -227,7 +227,7 @@ neglect, but it needs a maintenance rule:
   3. a `validation_error` appears that cannot be explained by our own payload
     construction.
 - **How to migrate.** The version string lives in one place (see
-  `src/notion_alchemist/`), so the change is mechanical: bump the constant,
+  `src/page_alchemist/`), so the change is mechanical: bump the constant,
   run the suite, then fix whatever the response-shape changes break. Because
   the IR keeps `raw`, existing archives on disk stay readable across the
   migration — you do not have to re-extract old sources.

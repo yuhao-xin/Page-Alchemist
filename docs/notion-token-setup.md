@@ -29,7 +29,7 @@
    <https://www.notion.so/my-integrations>
 2. 点 **+ New integration**（新建集成）
 3. 填写：
-   - **Name**：起个能认出来的名字，如 `Notion Alchemist`（这个名字会出现在
+   - **Name**：起个能认出来的名字，如 `Page Alchemist`（这个名字会出现在
      页面的「连接」列表里）
    - **Associated workspace**：选择目标 workspace（集成与 workspace 绑定，
      换 workspace 要重新建）
@@ -189,7 +189,7 @@ NOTION_TOKEN=ntn_xxx NA_PARENT_PAGE=https://... \
 添加 `NOTION_TOKEN`、`NA_PARENT_PAGE`，workflow 里这样引用：
 
 ```yaml
-- run: notion-alchemist run "$SOURCE_URL" --parent "$NA_PARENT_PAGE"
+- run: page-alchemist run "$SOURCE_URL" --parent "$NA_PARENT_PAGE"
   env:
     NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
     NA_PARENT_PAGE: ${{ secrets.NA_PARENT_PAGE }}
@@ -208,4 +208,4 @@ NOTION_TOKEN=ntn_xxx NA_PARENT_PAGE=https://... \
 
 ---
 
-*凭证相关字段的权威定义见 [`../src/notion_alchemist/config.py`](../src/notion_alchemist/config.py)；排错先跑 `na doctor`。*
+*凭证相关字段的权威定义见 [`../src/page_alchemist/config.py`](../src/page_alchemist/config.py)；排错先跑 `na doctor`。*

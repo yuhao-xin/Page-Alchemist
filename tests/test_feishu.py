@@ -13,9 +13,9 @@ from types import SimpleNamespace
 
 import pytest
 
-from notion_alchemist import feishu as F
-from notion_alchemist.config import Settings
-from notion_alchemist.feishu import (
+from page_alchemist import feishu as F
+from page_alchemist.config import Settings
+from page_alchemist.feishu import (
     FeishuApiError,
     FeishuClient,
     FeishuPublisher,
@@ -25,7 +25,7 @@ from notion_alchemist.feishu import (
     database_blocks,
     publish_to_feishu,
 )
-from notion_alchemist.models import Block, Document, PageNode, RichText
+from page_alchemist.models import Block, Document, PageNode, RichText
 
 
 # --------------------------------------------------------------------------- #

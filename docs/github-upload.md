@@ -18,20 +18,20 @@ grep -rn "YOUR_GITHUB_USERNAME" . --include="*.md" --include="*.toml" | grep -v 
 
 ## 第 2 步：在 GitHub 建仓库
 
-**方式 A — 网页**：<https://github.com/new> → 仓库名 `notion-alchemist` →
+**方式 A — 网页**：<https://github.com/new> → 仓库名 `page-alchemist` →
 **不要**勾选 "Add a README"（本地已有）→ Create repository。
 
 **方式 B — GitHub CLI**（已装 `gh` 并登录的话）：
 
 ```bash
-gh repo create notion-alchemist --public \
+gh repo create page-alchemist --public \
   --description "Extract, cleanse, restructure and re-publish Notion pages you are authorised to access, into your own workspace or an import-ready Markdown bundle."
 ```
 
 ## 第 3 步：推送
 
 ```bash
-git remote add origin https://github.com/yuhao-xin/notion-alchemist.git
+git remote add origin https://github.com/yuhao-xin/page-alchemist.git
 git branch -M main
 git push -u origin main
 ```

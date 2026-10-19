@@ -130,7 +130,7 @@ Notion 页面里，**页标题本身就是视觉上的 H1**。源模板常在正
 📌 来源：https://www.notion.so/...
    提取时间：2026-10-18T… · 引擎：api
    章节：Weekly review / Bonus: Advanced Prompts
-   本页由 notion-alchemist 归档整理（源 12 个内容块）
+   本页由 page-alchemist 归档整理（源 12 个内容块）
 ```
 
 这不是「抄袭痕迹」而是**你自己的归档元数据**：三个月后看到这页，

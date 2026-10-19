@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
-# notion-alchemist wrapper — run the CLI straight from a git checkout,
+# page-alchemist wrapper — run the CLI straight from a git checkout,
 # no installation required.
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-PY="${NOTION_ALCHEMIST_PYTHON:-}"
+PY="${PAGE_ALCHEMIST_PYTHON:-}"
 if [ -z "$PY" ]; then
   for candidate in python3 python; do
     if command -v "$candidate" >/dev/null 2>&1; then PY="$candidate"; break; fi
   done
 fi
 if [ -z "$PY" ]; then
-  echo "error: no python3 found. Set NOTION_ALCHEMIST_PYTHON." >&2
+  echo "error: no python3 found. Set PAGE_ALCHEMIST_PYTHON." >&2
   exit 1
 fi
 
@@ -25,4 +25,4 @@ case "$(uname -s)" in
   MINGW*|MSYS*|CYGWIN*) SEP=";" ;;
   *) SEP=":" ;;
 esac
-PYTHONPATH="src${PYTHONPATH:+$SEP$PYTHONPATH}" exec "$PY" -m notion_alchemist.cli "$@"
+PYTHONPATH="src${PYTHONPATH:+$SEP$PYTHONPATH}" exec "$PY" -m page_alchemist.cli "$@"

@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 
-from notion_alchemist.models import Block, Document, PageNode, RichText
+from page_alchemist.models import Block, Document, PageNode, RichText
 
 
 def _small_doc() -> Document:

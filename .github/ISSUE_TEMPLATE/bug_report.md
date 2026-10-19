@@ -18,7 +18,7 @@ na <command> ...        # the exact command you ran
 **Environment**
 - OS: 
 - Python: 
-- notion-alchemist version (`na --version`):
+- page-alchemist version (`na --version`):
 
 **Diagnostics**
 - `na doctor` output (redact the token!):

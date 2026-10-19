@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="Notion Alchemist" width="100%">
+<img src="assets/banner.svg" alt="Page Alchemist" width="100%">
 
-# Notion Alchemist
+# Page Alchemist
 
 **Extract · Cleanse · Rebuild** — turn any Notion page you can access into *your own* knowledge base.
 
@@ -19,11 +19,11 @@
 
 ## ✨ What it does
 
-Notion Alchemist is a local-first pipeline with three stages:
+Page Alchemist is a local-first pipeline with three stages:
 
 1. **Extract** — read an entire Notion page tree (blocks, nested children, databases, images & files) into a canonical, structured archive. The **official Notion API** is the primary engine; an *experimental* unofficial export engine covers view-only pages (e.g. guest access to a paid template library).
 2. **Transform** — cleanse the content so it becomes *yours*: strip special markers (synced blocks, template credits, watermark-ish text), retune icons to your own strategy, re-layout (heading hierarchy, auto table-of-contents, list normalisation) and rewrite metadata.
-3. **Publish** — rebuild the cleaned tree as fresh pages in **your own Notion workspace** — chunked, rate-limited, resumable and idempotent. Or export a clean, import-ready **Markdown bundle**.
+3. **Publish** — rebuild the cleaned tree as fresh pages in **your own Notion workspace** — chunked, rate-limited, resumable and idempotent. Or copy it into **Feishu / Lark docs** (`na publish-feishu`). Or export a clean, import-ready **Markdown bundle**.
 
 No server. No telemetry. No paid tier. Your credentials never leave your machine.
 
@@ -33,7 +33,7 @@ Notion holds a lot of valuable knowledge — but much of it is locked inside
 someone else's private workspace, a paid template library, or a structure you
 cannot reorganise.
 
-Notion Alchemist exists to make your Notion content **portable and yours to
+Page Alchemist exists to make your Notion content **portable and yours to
 restructure**: it reads a page tree you already have access to, cleanses it
 into a canonical archive, and rebuilds it — as fresh pages in your own
 workspace, or as an import-ready Markdown bundle.
@@ -57,6 +57,7 @@ flowchart LR
     IR --> T[Transform<br/>cleanse · icon retune · relayout]
     T --> CIR[(Clean IR + report)]
     CIR -->|publish| P[Your Notion<br/>pages.create + children.append]
+    CIR -->|publish-feishu| F[Feishu / Lark docs<br/>docx descendant API]
     CIR -->|export-md| M[Markdown bundle<br/>import-ready]
 ```
 
@@ -67,7 +68,7 @@ script it, version it.
 
 ```bash
 # 1. install
-pip install notion-alchemist
+pip install page-alchemist
 
 # 2. configure (see docs/notion-token-setup.md for the 2-minute token guide)
 cp .env.example .env
@@ -75,19 +76,19 @@ cp .env.example .env
 #   NA_PARENT_PAGE=https://...     # parent page in YOUR workspace
 
 # 3. run the whole pipeline
-notion-alchemist run "https://www.notion.so/your-source-page" --parent "$NA_PARENT_PAGE"
+page-alchemist run "https://www.notion.so/your-source-page" --parent "$NA_PARENT_PAGE"
 ```
 
 Prefer to look before you leap? Run the pipeline on built-in mock data — no
 credentials needed:
 
 ```bash
-notion-alchemist demo        # writes examples/demo_output/
+page-alchemist demo        # writes examples/demo_output/
 ```
 
 ## 🧪 Demo
 
-`notion-alchemist demo` generates a mock source library (nested pages, a
+`page-alchemist demo` generates a mock source library (nested pages, a
 database, callouts, synced blocks, images) and pushes it through all three
 stages, producing a transformed archive, a publish plan and a Markdown bundle
 under `examples/demo_output/`. Ideal for evaluating the transform rules and
@@ -153,7 +154,7 @@ The repository root **is** an Agent Skill (`SKILL.md`, plus `scripts/`,
 
 ```bash
 # Claude Code / WorkBuddy style
-git clone https://github.com/yuhao-xin/notion-alchemist.git ~/.claude/skills/notion-alchemist
+git clone https://github.com/yuhao-xin/page-alchemist.git ~/.claude/skills/page-alchemist
 # then simply ask: "extract this Notion page into my workspace: <url>"
 ```
 
@@ -181,7 +182,7 @@ annotated index.
 ## 🐳 Docker
 
 ```bash
-docker build -t notion-alchemist .
+docker build -t page-alchemist .
 docker compose run --rm alchemist run "<notion-url>" --parent "$NA_PARENT_PAGE"
 ```
 
@@ -197,8 +198,8 @@ Scheduled (re-)publication can be driven by host cron or GitHub Actions.
 ## 🤝 Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Bug reports and feature requests via
-[issues](https://github.com/yuhao-xin/notion-alchemist/issues).
+[issues](https://github.com/yuhao-xin/page-alchemist/issues).
 
 ## 📄 License
 
-[MIT](LICENSE) © 2026 Notion Alchemist Contributors
+[MIT](LICENSE) © 2026 Page Alchemist Contributors

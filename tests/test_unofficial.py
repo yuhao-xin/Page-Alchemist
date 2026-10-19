@@ -5,8 +5,8 @@ import zipfile
 
 import pytest
 
-from notion_alchemist.models import Document
-from notion_alchemist.notion_unofficial import (parse_export_zip,
+from page_alchemist.models import Document
+from page_alchemist.notion_unofficial import (parse_export_zip,
                                                 parse_markdown)
 
 MD_ROOT = """# Getting Started

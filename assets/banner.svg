@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Notion Alchemist — Extract, cleanse, rebuild">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Page Alchemist — Extract, cleanse, rebuild">
   <defs>
     <linearGradient id="bn-bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#101223"/>
@@ -45,7 +45,7 @@
 
   <!-- wordmark -->
   <text x="420" y="292" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif"
-        font-size="78" font-weight="700" fill="#FFFFFF">Notion <tspan fill="#14B8A6">Alchemist</tspan></text>
+        font-size="78" font-weight="700" fill="#FFFFFF">Page <tspan fill="#14B8A6">Alchemist</tspan></text>
   <text x="422" y="352" font-family="'Segoe UI', 'PingFang SC', 'Microsoft YaHei', system-ui, sans-serif"
         font-size="29" fill="#A9ADC8">Extract · Cleanse · Rebuild — your structure, your rules.</text>
 

@@ -11,5 +11,5 @@ RUN pip install .
 
 COPY . .
 
-ENTRYPOINT ["notion-alchemist"]
+ENTRYPOINT ["page-alchemist"]
 CMD ["--help"]

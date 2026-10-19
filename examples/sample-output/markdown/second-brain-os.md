@@ -3,7 +3,7 @@
 > 💡 来源：https://www.notion.so/@acme/Second-Brain-OS-0123456789abcdef0123456789abcdef
 > 提取时间：2026-10-18T02:04:16+08:00 · 引擎：api
 > 章节：Welcome aboard / Weekly review
-> 本页由 notion-alchemist 归档整理（源 13 个内容块）
+> 本页由 page-alchemist 归档整理（源 13 个内容块）
 
 ## Welcome aboard
 

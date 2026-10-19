@@ -1,6 +1,6 @@
 # Feishu publish tutorial
 
-> Audience: anyone who wants the cleansed output of notion-alchemist
+> Audience: anyone who wants the cleansed output of page-alchemist
 > **copied into Feishu Docs**. ~10 minutes, no code. All you need is a
 > Feishu **custom app** (App ID / App Secret) — no admin, no enterprise
 > verification required.
@@ -40,7 +40,7 @@ documents**:
   duplicate documents**
 
 ```bash
-notion-alchemist publish-feishu output/transformed.json
+page-alchemist publish-feishu output/transformed.json
 ```
 
 ---
@@ -49,7 +49,7 @@ notion-alchemist publish-feishu output/transformed.json
 
 1. Sign in to Feishu and open <https://open.feishu.cn/app>
 2. Click **Create custom app** (创建企业自建应用)
-3. Name it (e.g. `Notion Alchemist`) and create it
+3. Name it (e.g. `Page Alchemist`) and create it
 4. In the app page, open **Credentials & Basic Info** and copy the
    **App ID** (`cli_…`) and **App Secret**
 
@@ -96,7 +96,7 @@ the folder in the Feishu Drive web UI — the URL's last segment is the
 ## Step 4 — dry-run
 
 ```bash
-notion-alchemist publish-feishu output/transformed.json --dry-run
+page-alchemist publish-feishu output/transformed.json --dry-run
 ```
 
 The dry-run makes **no API calls** and needs no credentials, but prints
@@ -108,7 +108,7 @@ every document that would be created plus block counts. Continue when
 ## Step 5 — publish for real
 
 ```bash
-notion-alchemist publish-feishu output/transformed.json
+page-alchemist publish-feishu output/transformed.json
 ```
 
 Prints a link per document (`https://www.feishu.cn/docx/<id>`); the report

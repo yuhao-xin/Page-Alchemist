@@ -8,14 +8,14 @@
 
 ## Scope
 
-Notion Alchemist is a **local-first** CLI tool. It does not operate any server,
+Page Alchemist is a **local-first** CLI tool. It does not operate any server,
 does not phone home, and stores nothing outside the directories you point it at.
 
 Secrets handling:
 
 - Credentials are read from environment variables / `.env` only.
 - `.env` is git-ignored by default; never commit it.
-- `notion-alchemist doctor` prints only the *presence* and *shape* of tokens,
+- `page-alchemist doctor` prints only the *presence* and *shape* of tokens,
   never their values.
 
 ## Reporting a vulnerability

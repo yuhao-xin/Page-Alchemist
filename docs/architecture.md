@@ -2,7 +2,7 @@
 
 ## 一句话
 
-**Notion Alchemist = 三阶段流水线 + 磁盘上的规范中间表示（IR）。**
+**Page Alchemist = 三阶段流水线 + 磁盘上的规范中间表示（IR）。**
 Extract（提取）→ Transform（改造）→ Publish（发布），阶段之间只传
 `structure.json` / `transformed.json` 两种纯 JSON 文件。
 
@@ -33,7 +33,7 @@ Extract（提取）→ Transform（改造）→ Publish（发布），阶段之�
 
 ## IR（Intermediate Representation）
 
-定义在 `src/notion_alchemist/models.py`，四个 dataclass：
+定义在 `src/page_alchemist/models.py`，四个 dataclass：
 
 | 类型 | 关键字段 | 说明 |
 |---|---|---|
@@ -156,7 +156,7 @@ Transform 决定 `node.icon`，Publish 只负责应用——策略与执行分�
 ## 模块地图
 
 ```
-src/notion_alchemist/
+src/page_alchemist/
 ├── cli.py               # argparse 七个子命令：extract/transform/publish/
 │                        #   export-md/run/demo/doctor
 ├── config.py            # Settings：env/.env → 校验 problems()

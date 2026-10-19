@@ -1,6 +1,6 @@
 # 飞书发布教程（Feishu Publish）
 
-> 目标读者：想把 notion-alchemist 清洗后的内容**拷贝到飞书云文档**的人。
+> 目标读者：想把 page-alchemist 清洗后的内容**拷贝到飞书云文档**的人。
 > 全程约 10 分钟，不需要写代码。只需要一个飞书**自建应用**的
 > App ID / App Secret——不需要管理员，不需要企业认证（个人版飞书即可）。
 
@@ -35,7 +35,7 @@
 - 进度记录在 `.na_feishu_state.json`：**重复运行不会产生重复文档**
 
 ```bash
-notion-alchemist publish-feishu output/transformed.json
+page-alchemist publish-feishu output/transformed.json
 ```
 
 ---
@@ -44,7 +44,7 @@ notion-alchemist publish-feishu output/transformed.json
 
 1. 浏览器登录飞书，打开 <https://open.feishu.cn/app>
 2. 点 **创建企业自建应用**
-3. 填写名称（如 `Notion Alchemist`）与描述，创建
+3. 填写名称（如 `Page Alchemist`）与描述，创建
 4. 进入应用详情页，左侧 **凭证与基础信息** → 复制
    **App ID**（`cli_` 开头）和 **App Secret**
 
@@ -89,7 +89,7 @@ NA_FEISHU_APP_SECRET=xxxxxxxxxxxxxxxxxxxx
 ## 第 4 步：dry-run 验证
 
 ```bash
-notion-alchemist publish-feishu output/transformed.json --dry-run
+page-alchemist publish-feishu output/transformed.json --dry-run
 ```
 
 dry-run **不发任何 API 请求**，也不需要凭证，但会打印每篇将创建的
@@ -100,7 +100,7 @@ dry-run **不发任何 API 请求**，也不需要凭证，但会打印每篇将
 ## 第 5 步：正式发布
 
 ```bash
-notion-alchemist publish-feishu output/transformed.json
+page-alchemist publish-feishu output/transformed.json
 ```
 
 完成后打印每篇文档的链接（`https://www.feishu.cn/docx/<id>`），报告

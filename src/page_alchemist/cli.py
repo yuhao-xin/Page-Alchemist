@@ -335,7 +335,7 @@ def cmd_demo(args: argparse.Namespace, settings: Settings) -> int:
 def cmd_doctor(args: argparse.Namespace, settings: Settings) -> int:
     import platform
 
-    _banner("notion-alchemist doctor")
+    _banner("page-alchemist doctor")
     print(f"version      : {__version__}")
     print(f"python       : {platform.python_version()}")
 
@@ -392,7 +392,7 @@ def cmd_doctor(args: argparse.Namespace, settings: Settings) -> int:
 # --------------------------------------------------------------------------- #
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
-        prog="notion-alchemist",
+        prog="page-alchemist",
         description="Extract, cleanse, restructure and re-publish Notion "
                     "content into your own knowledge base.",
         epilog="see docs/ for the token tutorial and architecture notes",

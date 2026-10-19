@@ -1,4 +1,4 @@
-# Notion Alchemist — Brand Guide
+# Page Alchemist — Brand Guide
 
 > The single source of truth for the project's visual identity. All assets live
 > in this folder; the generated HTML/site theme reuses the same tokens.

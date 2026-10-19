@@ -4,8 +4,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from notion_alchemist.demo import build_demo_document, run_demo
-from notion_alchemist.transform import RETUNE_EMOJI, transform_document
+from page_alchemist.demo import build_demo_document, run_demo
+from page_alchemist.transform import RETUNE_EMOJI, transform_document
 
 
 class TestBuildDemoDocument:

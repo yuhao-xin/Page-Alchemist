@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+- **Renamed** `notion-alchemist` → `page-alchemist` (package
+  `notion_alchemist` → `page_alchemist`) before the first tagged release —
+  the tool is no longer Notion-only on the output side. The `na` command is
+  unchanged and GitHub redirects the old repository URL.
+
 ### Added
 - **Extract** — recursive Notion page-tree reader via the official API
   (blocks, nested children, databases, assets) with an *experimental*
@@ -15,10 +21,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   normalisation (heading levels, TOC, list cleanup) and metadata rewrite.
 - **Publish** — chunked, rate-limited, resumable writer that rebuilds pages
   in your own Notion workspace with idempotent state tracking.
+- **Feishu / Lark publish target** — `na publish-feishu` copies the cleaned
+  tree into Feishu docx documents (one document per source page, sub-pages as
+  siblings with the hierarchy preserved in a provenance callout), with
+  tenant-token auth, ≤100-block descendant batches, local image upload,
+  resumable `.na_feishu_state.json` and `--dry-run`.
 - **Markdown export** — clean, import-ready Markdown + assets bundle.
 - **Demo mode** — full pipeline on built-in mock data, no credentials needed.
-- CLI (`notion-alchemist` / `na`) with `extract` / `transform` / `publish` /
-  `export-md` / `run` / `demo` / `doctor` subcommands.
+- CLI (`page-alchemist` / `na`) with `extract` / `transform` / `publish` /
+  `publish-feishu` / `export-md` / `run` / `demo` / `doctor` subcommands.
 - Test suite (`tests/`) with a zero-dependency runner
   (`python scripts/run_tests.py`) alongside the pytest path.
 - Documentation: token tutorial, architecture, transform rules, FAQ, and a

@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/banner.svg" alt="Notion Alchemist" width="100%">
+<img src="assets/banner.svg" alt="Page Alchemist" width="100%">
 
-# Notion Alchemist · 概念炼金术士
+# Page Alchemist · 概念炼金术士
 
 **提取 · 清洗 · 重建** —— 把任何你有权访问的 Notion 页面，变成**你自己的**知识库。
 
@@ -23,14 +23,14 @@
 
 1. **提取（Extract）**——把整棵 Notion 页面树（块、嵌套子块、数据库、图片与文件）读成规范化的结构化归档。主引擎走**官方 Notion API**；另有一个**实验性**非官方导出引擎，覆盖「只能看、不能给集成授权」的页面（例如以访客身份浏览的付费模板库）。
 2. **清洗重组（Transform）**——把内容变成**你自己的**：去除特殊标记（同步块、模板署名、水印类文本）、按你自己的策略重组图标、重新排版（标题层级规整、自动目录、列表规范化）、改写元数据。
-3. **再发布（Publish）**——把清洗后的树在**你自己的 Notion 工作区**重建为新页面：分块写入、限流、断点续跑、幂等。也可以导出干净、可直接导入的 **Markdown 包**。
+3. **再发布（Publish）**——把清洗后的树在**你自己的 Notion 工作区**重建为新页面：分块写入、限流、断点续跑、幂等；也可以整库拷贝到**飞书 / Lark 文档**（`na publish-feishu`）；还可以导出干净、可直接导入的 **Markdown 包**。
 
 没有服务端、没有遥测、没有付费档。凭证只在本机。
 
 ## 🧭 为什么做
 
 Notion 沉淀了大量有价值的知识，但它们常常锁在别人的私有工作区、付费模板库，
-或一个你无法重组的结构里。Notion Alchemist 的初衷是**让内容可移植、可归你重组**：
+或一个你无法重组的结构里。Page Alchemist 的初衷是**让内容可移植、可归你重组**：
 它读取一棵你已经有权访问的页面树，清洗成规范归档，再重建——重建到你自己的工作区，
 或导出一份可直接导入的 Markdown 包。
 
@@ -51,6 +51,7 @@ flowchart LR
     IR --> T[清洗重组<br/>去标记 · 图标 · 重排]
     T --> CIR[(干净 IR + 报告)]
     CIR -->|publish| P[你的 Notion<br/>pages.create + append]
+    CIR -->|publish-feishu| F[飞书 / Lark 文档<br/>docx descendant API]
     CIR -->|export-md| M[Markdown 包<br/>可直接导入]
 ```
 
@@ -60,7 +61,7 @@ flowchart LR
 
 ```bash
 # 1. 安装
-pip install notion-alchemist
+pip install page-alchemist
 
 # 2. 配置（Token 两分钟申请教程见 docs/notion-token-setup.md）
 cp .env.example .env
@@ -68,18 +69,18 @@ cp .env.example .env
 #   NA_PARENT_PAGE=https://...     # 你自己工作区的父页面
 
 # 3. 一条命令跑完整流水线
-notion-alchemist run "https://www.notion.so/你的源页面" --parent "$NA_PARENT_PAGE"
+page-alchemist run "https://www.notion.so/你的源页面" --parent "$NA_PARENT_PAGE"
 ```
 
 想先看看效果？用内置 mock 数据跑通全流程，**无需任何凭证**：
 
 ```bash
-notion-alchemist demo        # 输出到 examples/demo_output/
+page-alchemist demo        # 输出到 examples/demo_output/
 ```
 
 ## 🧪 演示模式
 
-`notion-alchemist demo` 会生成一个模拟源库（嵌套页面、数据库、callout、同步块、
+`page-alchemist demo` 会生成一个模拟源库（嵌套页面、数据库、callout、同步块、
 图片），完整走一遍三个阶段，产出清洗后的归档、发布计划与 Markdown 包到
 `examples/demo_output/`。适合在接触真实工作区前，先评估清洗规则与输出形态。
 
@@ -128,7 +129,7 @@ notion-alchemist demo        # 输出到 examples/demo_output/
 + `assets/`），可被任何兼容 skills 的 agent 使用：
 
 ```bash
-git clone https://github.com/yuhao-xin/notion-alchemist.git ~/.claude/skills/notion-alchemist
+git clone https://github.com/yuhao-xin/page-alchemist.git ~/.claude/skills/page-alchemist
 # 然后直接说：「把这个 Notion 页面提取到我的工作区：<url>」
 ```
 
@@ -155,7 +156,7 @@ Skill 会指导 agent 调用 CLI，而不是临时拼 API 请求。
 ## 🐳 Docker
 
 ```bash
-docker build -t notion-alchemist .
+docker build -t page-alchemist .
 docker compose run --rm alchemist run "<notion-url>" --parent "$NA_PARENT_PAGE"
 ```
 
@@ -171,8 +172,8 @@ GitHub Actions 驱动。
 ## 🤝 贡献
 
 见 [CONTRIBUTING.md](CONTRIBUTING.md)。问题与需求请提
-[issue](https://github.com/yuhao-xin/notion-alchemist/issues)。
+[issue](https://github.com/yuhao-xin/page-alchemist/issues)。
 
 ## 📄 许可
 
-[MIT](LICENSE) © 2026 Notion Alchemist Contributors
+[MIT](LICENSE) © 2026 Page Alchemist Contributors

@@ -35,10 +35,10 @@ jobs:
         run: ruff check src tests scripts
       - name: CLI smoke (help/doctor/demo need no credentials)
         run: |
-          notion-alchemist --version
-          notion-alchemist --help
-          notion-alchemist doctor || true
-          notion-alchemist demo -o /tmp/ci-demo
+          page-alchemist --version
+          page-alchemist --help
+          page-alchemist doctor || true
+          page-alchemist demo -o /tmp/ci-demo
 
   skillhub-preflight:
     name: SkillHub pre-flight self-check

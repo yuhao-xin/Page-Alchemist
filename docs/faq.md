@@ -9,7 +9,7 @@
 
 **Q：Windows 能用吗？**
 能。全部代码跨平台，CLI 无 shell 依赖。用 PowerShell 跑：
-`python -m notion_alchemist.cli demo -o output`。
+`python -m page_alchemist.cli demo -o output`。
 
 **Q：Python 版本要求？**
 >= 3.9。开发测试在 3.13 上通过。
