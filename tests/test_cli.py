@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from page_alchemist import cli
+from page_alchemist import __version__, cli
 from page_alchemist.config import Settings
 
 
@@ -22,15 +22,18 @@ class TestHelpAndVersion:
             run_cli(["--help"])
         assert exc.value.code == 0
         out = capsys.readouterr().out
-        for cmd in ("extract", "transform", "publish", "export-md", "run",
-                    "demo", "doctor"):
+        # every subcommand the CLI registers must appear in --help
+        for cmd in ("extract", "transform", "publish", "publish-feishu",
+                    "export-md", "run", "demo", "doctor"):
             assert cmd in out
 
     def test_version(self, capsys):
         with pytest.raises(SystemExit) as exc:
             run_cli(["--version"])
         assert exc.value.code == 0
-        assert "0.1.0" in capsys.readouterr().out
+        # compare against the package constant, not a hard-coded string, so
+        # bumping the version never needs a test edit
+        assert __version__ in capsys.readouterr().out
 
 
 class TestDoctor:

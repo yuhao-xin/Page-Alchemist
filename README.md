@@ -67,8 +67,13 @@ script it, version it.
 ## 🚀 Quickstart
 
 ```bash
-# 1. install
-pip install page-alchemist
+# 1. install — from a checkout (the PyPI package is not published yet)
+git clone https://github.com/yuhao-xin/page-alchemist.git
+cd page-alchemist
+pip install -e .        # provides `page-alchemist` and the short `na` alias
+
+#   no install at all? use the wrappers from the checkout:
+#   ./scripts/na.sh extract <url>        (PowerShell: scripts\na.ps1)
 
 # 2. configure (see docs/notion-token-setup.md for the 2-minute token guide)
 cp .env.example .env
@@ -191,9 +196,9 @@ Scheduled (re-)publication can be driven by host cron or GitHub Actions.
 
 ## 🗺 Roadmap
 
-- **v0.2** — unofficial *duplicate* engine (in-place clone via saveTransactions)
-- **v0.3** — incremental sync & diff between source and published copy
-- **v0.4** — optional local web UI for previewing the transform before publish
+- **v0.3** — unofficial *duplicate* engine (in-place clone via saveTransactions)
+- **v0.4** — incremental sync & diff between source and published copy
+- **v0.5** — optional local web UI for previewing the transform before publish
 
 ## 🤝 Contributing
 

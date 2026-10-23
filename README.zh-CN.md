@@ -60,8 +60,13 @@ flowchart LR
 ## 🚀 快速开始
 
 ```bash
-# 1. 安装
-pip install page-alchemist
+# 1. 安装 —— 从源码安装（PyPI 包尚未发布）
+git clone https://github.com/yuhao-xin/page-alchemist.git
+cd page-alchemist
+pip install -e .        # 提供 `page-alchemist` 与短别名 `na`
+
+#   完全不想安装？直接用仓库自带的包装脚本：
+#   ./scripts/na.sh extract <url>   （PowerShell：scripts\na.ps1）
 
 # 2. 配置（Token 两分钟申请教程见 docs/notion-token-setup.md）
 cp .env.example .env
@@ -165,9 +170,9 @@ GitHub Actions 驱动。
 
 ## 🗺 路线图
 
-- **v0.2** —— 非官方 *duplicate* 引擎（saveTransactions 原地克隆）
-- **v0.3** —— 增量同步与 diff（源 ↔ 已发布副本）
-- **v0.4** —— 可选的本地 Web 预览界面（发布前预览清洗效果）
+- **v0.3** —— 非官方 *duplicate* 引擎（saveTransactions 原地克隆）
+- **v0.4** —— 增量同步与 diff（源 ↔ 已发布副本）
+- **v0.5** —— 可选的本地 Web 预览界面（发布前预览清洗效果）
 
 ## 🤝 贡献
 

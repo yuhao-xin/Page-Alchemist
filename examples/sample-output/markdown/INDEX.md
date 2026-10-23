@@ -1,6 +1,10 @@
 # Archive index
 
-- [Second Brain OS](second-brain-os/second-brain-os.md)
-  - 🗃️ data: second-brain-os/second-brain-os-data.csv
-- [Weekly Review Playbook](second-brain-os/weekly-review-playbook/weekly-review-playbook.md)
-- [Bonus: Advanced Prompts](second-brain-os/weekly-review-playbook/bonus-advanced-prompts/bonus-advanced-prompts.md)
+> **Trimmed sample.** A full `na demo` run nests child pages under
+> `second-brain-os/`; only the root document and its asset are committed here,
+> so the links below point at what actually exists in this directory.
+> Regenerate the complete tree with `na demo -o examples/demo_output`
+> (no credentials needed).
+
+- [Second Brain OS](second-brain-os.md)
+- asset: `assets/diagram.png`

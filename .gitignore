@@ -13,6 +13,7 @@ venv/
 # Secrets & local state
 .env
 .na_state.json
+.na_feishu_state.json
 
 # Output
 output/
