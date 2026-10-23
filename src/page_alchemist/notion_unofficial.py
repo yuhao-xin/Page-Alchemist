@@ -309,7 +309,9 @@ def parse_markdown(md: str, base_dir: Optional[Path] = None) -> List[Block]:
         # standalone image
         m = re.match(r"^!\[([^\]]*)\]\(([^)]+)\)\s*$", stripped)
         if m:
-            alt, href = m.group(1), m.group(2)
+            # the alt text is deliberately dropped: the block model carries
+            # the URL and the downloaded asset, not Markdown decoration.
+            href = m.group(2)
             blocks.append(Block(type="image", url=href,
                                 asset=_resolve_asset(href, base_dir)))
             i += 1

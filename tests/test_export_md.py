@@ -1,8 +1,7 @@
 """Markdown export: rendering fidelity and bundle layout."""
 from __future__ import annotations
 
-from page_alchemist.export_md import (export_markdown, render_page_md,
-                                        render_rich_text)
+from page_alchemist.export_md import export_markdown, render_page_md, render_rich_text
 from page_alchemist.models import Block, Document, PageNode, RichText
 
 

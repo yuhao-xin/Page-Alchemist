@@ -29,8 +29,8 @@ def _demo_png(path: Path) -> None:
     """A 1x1 transparent PNG — stands in for a downloaded asset."""
     if path.exists():
         return
-    import zlib
     import struct
+    import zlib
 
     def chunk(tag: bytes, data: bytes) -> bytes:
         return (struct.pack(">I", len(data)) + tag + data

@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Known follow-ups
+- **PEP 585/604 modernisation** — `typing.List`/`Dict` → `list`/`dict` and
+  `Optional[X]` → `X | None` across ~280 annotations. Not enabled by the
+  pinned ruff set on purpose: `X | None` is only safe where annotations are
+  postponed, and the declared floor is still Python 3.9. Do it as its own
+  pass, in its own commit.
+
 ## [0.2.1] - 2026-10-24
 
 Maintenance release: makes the shipped checks pass *outside* a directory that
@@ -19,8 +28,11 @@ happens to be named after the package — which is what a CI checkout is.
   accepts the name the project declares for itself in `pyproject.toml` /
   `setup.cfg` / `setup.py`; an unrelated directory name with no matching
   declaration is still an error.
-- Unused imports in `src/` and `tests/` cleared, so `ruff check` (which had
-  never actually run — the test step failed first) now passes.
+- Unused imports in `src/` and `tests/` cleared, and the ruff rule set pinned
+  in `pyproject.toml` (`[tool.ruff.lint] select`), so `ruff check` — which had
+  never actually run, the test step failed first — passes. The pin matters:
+  ruff's implicit default grew in the 0.14+ releases, so an unpinned
+  `ruff>=0.6` turned CI red with ~300 findings unrelated to the commit.
 
 ### Added
 - Regression tests locking the new behaviour: a checkout directory whose name

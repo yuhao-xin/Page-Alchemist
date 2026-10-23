@@ -58,3 +58,15 @@ addopts = "-q"
 [tool.ruff]
 line-length = 100
 target-version = "py39"
+
+# Pinned on purpose. Ruff's *implicit* default grew over the 0.14+ releases
+# (UP/RUF/FURB/B/S/... joined it), so `dev = ["ruff>=0.6"]` resolving to a
+# newer release used to turn CI red overnight with ~300 findings that had
+# nothing to do with the commit. A linter upgrade must not silently change
+# what this project promises; widen this list deliberately, in its own commit.
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+
+# typing.List / Optional[X] are still correct for the declared floor (py39)
+# and rewriting ~280 annotations is a modernisation pass of its own — see the
+# v0.3 note in CHANGELOG.md.

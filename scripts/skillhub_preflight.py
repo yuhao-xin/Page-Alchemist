@@ -136,7 +136,7 @@ def check(root: Path) -> int:
     if not skill_md.is_file():
         print(f"[error] 1. SKILL.md not found at package root: {skill_md}")
         return 2
-    print(f"[ok]    1. SKILL.md present at package root")
+    print("[ok]    1. SKILL.md present at package root")
 
     text = skill_md.read_text(encoding="utf-8")
 

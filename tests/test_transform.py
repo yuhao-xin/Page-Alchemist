@@ -3,8 +3,7 @@ from __future__ import annotations
 
 import pytest
 
-from page_alchemist.transform import (RETUNE_EMOJI, TransformOptions,
-                                        pick_emoji, transform_document)
+from page_alchemist.transform import RETUNE_EMOJI, TransformOptions, pick_emoji, transform_document
 
 
 class TestTitleNormalisation:

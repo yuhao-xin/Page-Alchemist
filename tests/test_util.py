@@ -6,10 +6,17 @@ import time
 
 import pytest
 
-from page_alchemist.util import (RateLimiter, backoff_delay,
-                                   extract_notion_id, format_uuid,
-                                   load_dotenv, safe_filename, sha1_bytes,
-                                   sha1_file, slugify)
+from page_alchemist.util import (
+    RateLimiter,
+    backoff_delay,
+    extract_notion_id,
+    format_uuid,
+    load_dotenv,
+    safe_filename,
+    sha1_bytes,
+    sha1_file,
+    slugify,
+)
 
 HEX32 = "0123456789abcdef0123456789abcdef"
 
