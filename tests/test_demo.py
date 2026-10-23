@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 
 from page_alchemist.demo import build_demo_document, run_demo
-from page_alchemist.transform import RETUNE_EMOJI, transform_document
+from page_alchemist.transform import RETUNE_EMOJI
 
 
 class TestBuildDemoDocument:

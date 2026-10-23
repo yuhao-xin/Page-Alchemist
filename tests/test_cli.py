@@ -2,13 +2,10 @@
 from __future__ import annotations
 
 import json
-import sys
-from pathlib import Path
 
 import pytest
 
 from page_alchemist import __version__, cli
-from page_alchemist.config import Settings
 
 
 def run_cli(argv):

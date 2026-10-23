@@ -98,6 +98,34 @@ def _parse_simple_yaml(block: str):
     return data
 
 
+def _slug(value: str) -> str:
+    """Comparable form of a name: lowercase, separators collapsed.
+
+    ``Page-Alchemist``, ``page_alchemist`` and ``page-alchemist`` are the same
+    package; only the filesystem spelling differs.
+    """
+    return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+
+
+def _declared_package_name(root: Path) -> str:
+    """Best-effort read of the package name from pyproject.toml / setup.py.
+
+    Returns "" when the repo declares no name we can parse.
+    """
+    for filename in ("pyproject.toml", "setup.cfg", "setup.py"):
+        path = root / filename
+        if not path.is_file():
+            continue
+        try:
+            text = path.read_text(encoding="utf-8")
+        except (UnicodeDecodeError, OSError):
+            continue
+        m = re.search(r"^\s*name\s*=\s*[\"']([^\"']+)[\"']", text, re.M)
+        if m:
+            return m.group(1)
+    return ""
+
+
 def check(root: Path) -> int:
     errors: list[str] = []
     warnings: list[str] = []
@@ -131,11 +159,25 @@ def check(root: Path) -> int:
     name = fm.get("name", "")
     desc = fm.get("description", "")
 
-    # ---- 3. name == directory name ----------------------------------------
-    if name and name != root.name:
-        errors.append(f"3. frontmatter name {name!r} != directory name {root.name!r}")
-    else:
+    # ---- 3. name == directory name (or the declared package name) ---------
+    # The checkout directory is a container, not the package: CI clones into a
+    # directory named after the *repository*, and forks/renames change it
+    # again. Compare normalised slugs, and accept a match against the name the
+    # project declares for itself (pyproject/setup) as an equally strong signal.
+    declared = _declared_package_name(root)
+    dir_slug, name_slug = _slug(root.name), _slug(name)
+    if not name:
+        errors.append("3. frontmatter name is empty")
+    elif name_slug == dir_slug:
         print(f"[ok]    3. name matches directory: {name}")
+    elif declared and _slug(declared) == name_slug:
+        print(f"[ok]    3. name matches declared package name {declared!r} "
+              f"(checkout directory is {root.name!r} — that is the container, "
+              f"not the package)")
+    else:
+        errors.append(
+            f"3. frontmatter name {name!r} != directory name {root.name!r}"
+            + (f" and != declared package name {declared!r}" if declared else ""))
 
     # ---- 4. slug collisions (generic words) -------------------------------
     words = set(re.split(r"[-_\s]+", name.lower())) - {""}

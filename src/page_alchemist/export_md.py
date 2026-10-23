@@ -16,10 +16,10 @@ import re
 import shutil
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
-from typing import List, Optional
+from typing import List
 
 from .models import Block, Document, PageNode, RichText
-from .util import get_logger, safe_filename, slugify
+from .util import get_logger, safe_filename
 
 _ESCAPE_RE = re.compile(r"([\\`*\[\]|])")
 

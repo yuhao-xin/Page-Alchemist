@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2026-10-24
+
+Maintenance release: makes the shipped checks pass *outside* a directory that
+happens to be named after the package — which is what a CI checkout is.
+
+### Fixed
+- **CI was red on every commit.** The SkillHub pre-flight compared the
+  `SKILL.md` name to the *directory* name verbatim, so a checkout directory
+  named after the repository (`Page-Alchemist`) failed item 3 with exit 2 —
+  failing all three CI jobs, including the test job that runs the same check
+  as a regression guard. The check now compares normalised slugs and also
+  accepts the name the project declares for itself in `pyproject.toml` /
+  `setup.cfg` / `setup.py`; an unrelated directory name with no matching
+  declaration is still an error.
+- Unused imports in `src/` and `tests/` cleared, so `ruff check` (which had
+  never actually run — the test step failed first) now passes.
+
+### Added
+- Regression tests locking the new behaviour: a checkout directory whose name
+  differs from the package is accepted when the project declares that name,
+  and rejected when it does not.
+
 ## [0.2.0] - 2026-10-24
 
 The release that makes the tool **output-agnostic**: Notion is still the only

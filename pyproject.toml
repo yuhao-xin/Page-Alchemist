@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "page-alchemist"
-version = "0.2.0"
+version = "0.2.1"
 description = "Extract, cleanse, restructure and re-publish Notion pages you are authorised to access, into your own workspace (Notion or Feishu/Lark) or an import-ready Markdown bundle."
 readme = "README.md"
 requires-python = ">=3.9"

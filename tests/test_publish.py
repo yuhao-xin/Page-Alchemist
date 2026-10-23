@@ -7,7 +7,7 @@ import pytest
 
 from page_alchemist import publish as P
 from page_alchemist.config import Settings
-from page_alchemist.models import Document
+from page_alchemist.models import RichText
 from page_alchemist.publish import (NotionPublisher, StateStore,
                                       rich_text_payload)
 from page_alchemist.transform import (TransformOptions,

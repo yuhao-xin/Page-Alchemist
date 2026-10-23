@@ -9,8 +9,6 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-import pytest
-
 ROOT = Path(__file__).resolve().parent.parent
 SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
@@ -85,6 +83,37 @@ def test_missing_skill_md_returns_2(tmp_path):
 def test_name_directory_mismatch_is_an_error(tmp_path):
     pkg = _pkg(tmp_path)
     _write_skill(pkg, name="other-name")
+    assert preflight.check(pkg) == 2
+
+
+def test_checkout_directory_mismatch_is_accepted_when_declared(tmp_path):
+    """CI clones into a directory named after the repository, not the package.
+
+    A fork, a rename, or a differently-cased checkout must not fail item 3 as
+    long as the project declares the same name — this is the exact shape that
+    turned the whole pipeline red in 0.2.0.
+    """
+    pkg = tmp_path / "Some-Repo-Checkout"
+    pkg.mkdir()
+    _write_skill(pkg)
+    (pkg / "pyproject.toml").write_text(
+        f'[project]\nname = "{PKG}"\nversion = "1.0"\n', encoding="utf-8")
+    assert preflight.check(pkg) == 0
+
+
+def test_directory_casing_and_separator_differences_are_accepted(tmp_path):
+    pkg = tmp_path / "Notion_Tidier"
+    pkg.mkdir()
+    _write_skill(pkg)
+    assert preflight.check(pkg) == 0
+
+
+def test_directory_mismatch_with_wrong_declaration_is_an_error(tmp_path):
+    pkg = tmp_path / "Some-Repo-Checkout"
+    pkg.mkdir()
+    _write_skill(pkg)
+    (pkg / "pyproject.toml").write_text(
+        '[project]\nname = "something-else"\nversion = "1.0"\n', encoding="utf-8")
     assert preflight.check(pkg) == 2
 
 

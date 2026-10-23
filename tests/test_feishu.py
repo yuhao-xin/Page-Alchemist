@@ -20,7 +20,6 @@ from page_alchemist.feishu import (
     FeishuClient,
     FeishuPublisher,
     chunk_plan,
-    convert_block,
     convert_blocks,
     database_blocks,
     publish_to_feishu,
@@ -380,6 +379,7 @@ class TestPublisher:
         settings = make_settings(tmp_path)
         FeishuPublisher(settings, session=session).publish(feishu_doc())
         calls_after_first = len(session.calls)
+        assert calls_after_first > 0  # the first run really did talk to Feishu
 
         session2 = FakeFeishuSession()
         report2 = FeishuPublisher(settings, session=session2).publish(

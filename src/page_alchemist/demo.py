@@ -29,7 +29,6 @@ def _demo_png(path: Path) -> None:
     """A 1x1 transparent PNG — stands in for a downloaded asset."""
     if path.exists():
         return
-    import base64
     import zlib
     import struct
 
